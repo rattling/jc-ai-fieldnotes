@@ -90,17 +90,19 @@ Interpretation:
 **On the current 200-row synthetic run, agent mode has higher quality metrics with similar safety recall.**
 
 Observed from notebook aggregate metrics and `eval_outputs/ab_eval_summary.md`:
-- Workflow: doc type / queue accuracy = **0.915 / 0.915**
+- Workflow: doc type / queue accuracy = **0.925 / 0.925**
 - Agent: doc type / queue accuracy = **1.000 / 1.000**
 - Escalation recall: **1.000** for both
-- Escalation precision: **0.2125** (workflow) vs **0.2576** (agent)
-- Missing-field recall: **0.965** (workflow) vs **1.000** (agent)
+- Escalation precision: **0.500** (workflow) vs **1.000** (agent)
+- Missing-field recall: **0.970** (workflow) vs **1.000** (agent)
 
 Interpretation:
 - Agent mode currently provides a measurable quality lift, especially on edge-like and ambiguous samples, while preserving full escalation recall.
 
 ## Finding 003b: The current deltas are statistically stable on this corpus
 **Paired bootstrap intervals suggest the observed quality lift is not a narrow noise artifact for this 200-row snapshot.**
+
+After aligning synthetic gold labels with the same core policy used at runtime, the precision gap became materially cleaner and more interpretable (policy-consistent comparison).
 
 Using 4,000 paired bootstrap resamples over the current corpus (`agent - workflow`):
 - Doc-type accuracy delta: **+0.085** (95% CI: **+0.050 to +0.125**)

@@ -90,11 +90,14 @@ This keeps autonomy bounded and auditable.
 
 ### 3) Quality and behavior both move
 Current summary metrics:
-- Workflow doc type / queue accuracy: **0.915 / 0.915**
+- Workflow doc type / queue accuracy: **0.925 / 0.925**
 - Agent doc type / queue accuracy: **1.000 / 1.000**
-- Missing-field recall: **0.965** (workflow) vs **1.000** (agent)
+- Missing-field recall: **0.970** (workflow) vs **1.000** (agent)
 - Escalation recall: **1.000** for both
+- Escalation precision: **0.500** (workflow) vs **1.000** (agent)
 - Distinct step patterns: **1** (workflow) vs **3** (agent)
+
+Note: we aligned synthetic gold labeling with the same core escalation policy used by runtime, which removed a previous policy-vs-eval mismatch and made precision results policy-consistent.
 
 So the significance is two-dimensional:
 - **Outcome quality** can improve,
