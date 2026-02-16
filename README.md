@@ -1,6 +1,22 @@
 # jc-ai-fieldnotes
 
-Reproducible monorepo bootstrap for AI fieldnotes experiments.
+Applied data science, ML and AI systems work.
+
+These notes document experiments, implementation patterns, architectural trade-offs, and evaluation approaches across classical DS, ML and GenAI systems.
+
+Focus: judgement, production realism, and system design.
+
+## Architecture
+
+- [Architecture guidelines for all experiments](docs/ARCHITECTURE_GUIDELINES.md)
+
+## Experiments
+
+| Name | Type | Focus |
+|------|------|-------|
+| agents_vs_workflows | CODED | Agentic vs constrained workflows in document triage |
+| tabular_baselines | CODED | Modern tabular ML vs deep tabular models |
+
 
 ## Setup
 
