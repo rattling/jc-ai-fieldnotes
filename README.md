@@ -1,14 +1,32 @@
 # jc-ai-fieldnotes
 
-Applied data science, ML and AI systems work.
+Applied data science, ML, and AI systems work grounded in realistic decision workflows.
 
-These notes document experiments, implementation patterns, architectural trade-offs, and evaluation approaches across classical DS, ML and GenAI systems.
+This repo is designed to go beyond pattern demos.
+It focuses on how AI systems behave in context: with policy constraints, failure modes, trade-offs, and judgement calls that resemble real operating environments.
 
 Focus: judgement, production realism, and system design.
+
+## Why this repo
+
+There are many examples of AI patterns in isolation. There are fewer examples that:
+- anchor those patterns in realistic use cases,
+- compare alternatives fairly,
+- show guardrails and failure boundaries,
+- and document what was learned in a way others can reuse.
+
+This repository is meant to be that kind of working field guide.
+
+## How this repo is organized
+
+- **Use cases** hold realistic domain framing and reusable core code.
+- **Experiments** under each use case test specific design choices (A/B style).
+- **Findings** are recorded primarily at experiment level (to avoid duplicated or drifting summaries at repo root), with top-level links for navigation.
 
 ## Field Notes
 
 - [Repository field notes (reader-friendly guide)](docs/FIELDNOTES.md)
+- [Current detailed findings: agents_vs_workflows](use_cases/customer_doc_triage/experiments/agents_vs_workflows/docs/FIELDNOTES.md)
 
 ## Architecture
 
@@ -32,10 +50,10 @@ For use-case work, follow this promotion loop:
 
 ## Experiments
 
-| Name | Type | Focus |
-|------|------|-------|
-| use_cases/customer_doc_triage/experiments/agents_vs_workflows | CODED | Agentic vs constrained workflows in document triage |
-| tabular_baselines | CODED | Modern tabular ML vs deep tabular models |
+| Name | Status | Type | Focus |
+|------|--------|------|-------|
+| use_cases/customer_doc_triage/experiments/agents_vs_workflows | ACTIVE | CODED | Agentic vs constrained workflows in document triage |
+| experiments/tabular_baselines | TODO | CODED | Modern tabular ML vs deep tabular models |
 
 
 ## Setup
