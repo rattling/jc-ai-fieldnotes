@@ -5,15 +5,22 @@ from statistics import mean
 from typing import Any
 
 
-def accuracy(predictions: list[dict[str, Any]], gold: dict[str, dict[str, Any]], field: str) -> float:
+def accuracy(
+	predictions: list[dict[str, Any]],
+	gold: dict[str, dict[str, Any]],
+	prediction_field: str,
+	gold_field: str | None = None,
+) -> float:
 	total = len(predictions)
 	if total == 0:
 		return 0.0
 
+	target_gold_field = gold_field or prediction_field
+
 	correct = 0
 	for prediction in predictions:
 		doc_id = prediction["doc_id"]
-		if doc_id in gold and prediction.get(field) == gold[doc_id].get(field):
+		if doc_id in gold and prediction.get(prediction_field) == gold[doc_id].get(target_gold_field):
 			correct += 1
 
 	return correct / total
@@ -79,6 +86,14 @@ def latency_and_cost_proxies(predictions: list[dict[str, Any]]) -> dict[str, flo
 	}
 
 
+def distinct_step_patterns(predictions: list[dict[str, Any]]) -> int:
+	patterns = {
+		tuple(pred.get("decision_trace", {}).get("steps", []))
+		for pred in predictions
+	}
+	return len(patterns)
+
+
 def edge_case_flag(gold_row: dict[str, Any]) -> bool:
 	return bool(gold_row.get("escalate", False) or gold_row.get("required_missing_fields"))
 
@@ -103,15 +118,25 @@ def slice_summary(
 	for label, rows in by_doc_type.items():
 		summary[f"doc_type:{label}"] = {
 			"count": len(rows),
-			"doc_type_accuracy": accuracy(rows, gold, field="doc_type"),
-			"queue_accuracy": accuracy(rows, gold, field="recommended_queue"),
+			"doc_type_accuracy": accuracy(
+				rows,
+				gold,
+				prediction_field="doc_type",
+				gold_field="true_doc_type",
+			),
+			"queue_accuracy": accuracy(rows, gold, prediction_field="recommended_queue"),
 		}
 
 	for label, rows in by_edge_case.items():
 		summary[f"slice:{label}"] = {
 			"count": len(rows),
-			"doc_type_accuracy": accuracy(rows, gold, field="doc_type"),
-			"queue_accuracy": accuracy(rows, gold, field="recommended_queue"),
+			"doc_type_accuracy": accuracy(
+				rows,
+				gold,
+				prediction_field="doc_type",
+				gold_field="true_doc_type",
+			),
+			"queue_accuracy": accuracy(rows, gold, prediction_field="recommended_queue"),
 		}
 
 	return summary
@@ -122,12 +147,18 @@ def score(predictions: list[dict[str, Any]], gold: dict[str, dict[str, Any]]) ->
 	proxies = latency_and_cost_proxies(predictions)
 
 	return {
-		"doc_type_accuracy": accuracy(predictions, gold, field="doc_type"),
-		"queue_accuracy": accuracy(predictions, gold, field="recommended_queue"),
+		"doc_type_accuracy": accuracy(
+			predictions,
+			gold,
+			prediction_field="doc_type",
+			gold_field="true_doc_type",
+		),
+		"queue_accuracy": accuracy(predictions, gold, prediction_field="recommended_queue"),
 		"escalation_precision": escalation_precision,
 		"escalation_recall": escalation_recall,
 		"missing_field_recall": missing_field_recall(predictions, gold),
 		"avg_elapsed_ms": proxies["avg_elapsed_ms"],
 		"avg_tool_calls": proxies["avg_tool_calls"],
+		"distinct_step_patterns": distinct_step_patterns(predictions),
 		"slices": slice_summary(predictions, gold),
 	}

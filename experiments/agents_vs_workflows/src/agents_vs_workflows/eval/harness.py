@@ -90,8 +90,8 @@ def _write_markdown_summary(path: Path, summary: dict[str, Any]) -> None:
     lines = ["# A/B Eval Summary", ""]
     lines.append("## Overall")
     lines.append("")
-    lines.append("| Mode | DocType Acc | Queue Acc | Escalation P | Escalation R | Missing Recall | Avg Elapsed ms | Avg Tool Calls |")
-    lines.append("|------|-------------|-----------|--------------|--------------|----------------|----------------|----------------|")
+    lines.append("| Mode | DocType Acc | Queue Acc | Escalation P | Escalation R | Missing Recall | Avg Elapsed ms | Avg Tool Calls | Step Patterns |")
+    lines.append("|------|-------------|-----------|--------------|--------------|----------------|----------------|----------------|---------------|")
 
     for mode in ("workflow", "agent"):
         metrics = summary["modes"][mode]
@@ -104,7 +104,8 @@ def _write_markdown_summary(path: Path, summary: dict[str, Any]) -> None:
             f"{metrics['escalation_recall']:.3f} | "
             f"{metrics['missing_field_recall']:.3f} | "
             f"{metrics['avg_elapsed_ms']:.1f} | "
-            f"{metrics['avg_tool_calls']:.2f} |"
+            f"{metrics['avg_tool_calls']:.2f} | "
+            f"{metrics['distinct_step_patterns']} |"
         )
 
     lines.append("")

@@ -2,93 +2,95 @@
   "corpus_size": 200,
   "modes": {
     "workflow": {
-      "doc_type_accuracy": 0.0,
+      "doc_type_accuracy": 1.0,
       "queue_accuracy": 1.0,
       "escalation_precision": 0.2647058823529412,
       "escalation_recall": 1.0,
       "missing_field_recall": 1.0,
       "avg_elapsed_ms": 0.0,
       "avg_tool_calls": 0.0,
+      "distinct_step_patterns": 1,
       "slices": {
         "doc_type:security_questionnaire": {
           "count": 37,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:billing_dispute": {
           "count": 34,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:incident_report": {
           "count": 51,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:access_request": {
           "count": 38,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:feature_request": {
           "count": 40,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "slice:edge_case": {
           "count": 33,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "slice:non_edge_case": {
           "count": 167,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         }
       }
     },
     "agent": {
-      "doc_type_accuracy": 0.0,
+      "doc_type_accuracy": 1.0,
       "queue_accuracy": 1.0,
       "escalation_precision": 0.2647058823529412,
       "escalation_recall": 1.0,
       "missing_field_recall": 1.0,
       "avg_elapsed_ms": 0.0,
       "avg_tool_calls": 3.445,
+      "distinct_step_patterns": 3,
       "slices": {
         "doc_type:security_questionnaire": {
           "count": 37,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:billing_dispute": {
           "count": 34,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:incident_report": {
           "count": 51,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:access_request": {
           "count": 38,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:feature_request": {
           "count": 40,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "slice:edge_case": {
           "count": 33,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "slice:non_edge_case": {
           "count": 167,
-          "doc_type_accuracy": 0.0,
+          "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         }
       }
