@@ -4,10 +4,22 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import sys
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
+
+try:
+    from customer_doc_triage.triage.engine import infer_priority
+    from customer_doc_triage.triage.policies import find_required_missing_fields, should_escalate
+except ModuleNotFoundError:
+    repo_root = Path(__file__).resolve().parents[5]
+    core_src = repo_root / "use_cases" / "customer_doc_triage" / "src"
+    if str(core_src) not in sys.path:
+        sys.path.insert(0, str(core_src))
+    from customer_doc_triage.triage.engine import infer_priority
+    from customer_doc_triage.triage.policies import find_required_missing_fields, should_escalate
 
 DOC_TYPES = [
     "incident_report",
@@ -89,7 +101,7 @@ def make_timestamp(randomizer: random.Random) -> str:
     return ts.isoformat().replace("+00:00", "Z")
 
 
-def build_incident(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any], list[str]]:
+def build_incident(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any]]:
     service = randomizer.choice(INCIDENT_SERVICES)
     region = randomizer.choice(REGIONS)
     latency = randomizer.randint(120, 900)
@@ -101,18 +113,17 @@ def build_incident(randomizer: random.Random, edge_case: bool) -> tuple[str, dic
         "service": service,
         "region": region,
         "has_logs": randomizer.random() > 0.15,
+        "request_id_examples": "req-1001,req-1002",
     }
-    missing_fields: list[str] = []
 
     if edge_case and randomizer.random() < 0.45:
-        metadata.pop("has_logs", None)
-        missing_fields.append("request_id_examples")
+        metadata.pop("request_id_examples", None)
         content += " Unable to attach request IDs yet."
 
-    return content, metadata, missing_fields
+    return content, metadata
 
 
-def build_access_request(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any], list[str]]:
+def build_access_request(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any]]:
     role = randomizer.choice(ACCESS_ROLES)
     window = randomizer.choice(["overnight migration", "month-end close", "audit prep"])
     content = (
@@ -122,19 +133,20 @@ def build_access_request(randomizer: random.Random, edge_case: bool) -> tuple[st
         "requested_role": role,
         "temporary_access": True,
         "justification": "operational requirement",
+        "approval_reference": f"APR-{randomizer.randint(1000, 9999)}",
     }
-    missing_fields: list[str] = []
 
     if edge_case and randomizer.random() < 0.50:
-        metadata.pop("justification", None)
-        missing_fields.append("approval_reference")
+        metadata.pop("approval_reference", None)
         content += " Approver details not included in submission."
 
-    return content, metadata, missing_fields
+    return content, metadata
 
 
-def build_security_questionnaire(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any], list[str]]:
+def build_security_questionnaire(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any]]:
     framework = randomizer.choice(SECURITY_FRAMEWORKS)
+    due_days = randomizer.randint(2, 14)
+    required_due_date = (datetime(2026, 3, 1, tzinfo=timezone.utc) + timedelta(days=due_days)).date().isoformat()
     content = (
         f"Customer sent security questionnaire for {framework} review. "
         "Needs completion before procurement deadline."
@@ -142,19 +154,18 @@ def build_security_questionnaire(randomizer: random.Random, edge_case: bool) -> 
     metadata = {
         "framework": framework,
         "question_count": randomizer.randint(20, 180),
-        "deadline_days": randomizer.randint(2, 14),
+        "required_due_date": required_due_date,
+        "deadline_days": due_days,
     }
-    missing_fields: list[str] = []
 
     if edge_case and randomizer.random() < 0.35:
-        metadata.pop("deadline_days", None)
-        missing_fields.append("required_due_date")
+        metadata.pop("required_due_date", None)
         content += " Submission deadline not clearly stated."
 
-    return content, metadata, missing_fields
+    return content, metadata
 
 
-def build_billing_dispute(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any], list[str]]:
+def build_billing_dispute(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any]]:
     issue = randomizer.choice(BILLING_ISSUES)
     amount = randomizer.randint(400, 12000)
     content = (
@@ -164,17 +175,17 @@ def build_billing_dispute(randomizer: random.Random, edge_case: bool) -> tuple[s
     metadata = {
         "issue_type": issue,
         "disputed_amount": amount,
+        "invoice_id": f"INV-{randomizer.randint(10000, 99999)}",
     }
-    missing_fields: list[str] = []
 
     if edge_case and randomizer.random() < 0.40:
-        missing_fields.append("invoice_id")
+        metadata.pop("invoice_id", None)
         content += " Invoice identifier not provided in the message."
 
-    return content, metadata, missing_fields
+    return content, metadata
 
 
-def build_feature_request(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any], list[str]]:
+def build_feature_request(randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any]]:
     area = randomizer.choice(FEATURE_AREAS)
     content = (
         f"Feature request: improve {area} for enterprise rollout. "
@@ -183,17 +194,17 @@ def build_feature_request(randomizer: random.Random, edge_case: bool) -> tuple[s
     metadata = {
         "product_area": area,
         "customer_impact": randomizer.choice(["low", "medium", "high"]),
+        "business_justification": "Customer reports measurable efficiency gains if implemented.",
     }
-    missing_fields: list[str] = []
 
     if edge_case and randomizer.random() < 0.30:
-        missing_fields.append("business_justification")
+        metadata.pop("business_justification", None)
         content += " Business impact details are currently limited."
 
-    return content, metadata, missing_fields
+    return content, metadata
 
 
-def build_case_fields(doc_type: str, randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any], list[str]]:
+def build_case_fields(doc_type: str, randomizer: random.Random, edge_case: bool) -> tuple[str, dict[str, Any]]:
     if doc_type == "incident_report":
         return build_incident(randomizer, edge_case)
     if doc_type == "access_request":
@@ -205,39 +216,6 @@ def build_case_fields(doc_type: str, randomizer: random.Random, edge_case: bool)
     return build_feature_request(randomizer, edge_case)
 
 
-def compute_priority(doc_type: str, edge_case: bool, tier: str | None, randomizer: random.Random) -> tuple[str, int]:
-    base_priority = {
-        "incident_report": "P1",
-        "access_request": "P2",
-        "security_questionnaire": "P2",
-        "billing_dispute": "P2",
-        "feature_request": "P3",
-    }[doc_type]
-    severity_map = {"P1": 5, "P2": 3, "P3": 2}
-
-    priority = base_priority
-    if tier == "enterprise" and base_priority == "P2" and randomizer.random() < 0.4:
-        priority = "P1"
-    if edge_case and randomizer.random() < 0.2 and priority != "P1":
-        priority = "P1"
-
-    severity = severity_map[priority]
-    if edge_case and randomizer.random() < 0.35:
-        severity = min(5, severity + 1)
-
-    return priority, severity
-
-
-def escalation_reason_for(doc_type: str, missing_fields: list[str], tier: str | None, edge_case: bool) -> str | None:
-    if doc_type == "access_request" and tier == "enterprise":
-        return "Privileged access request for regulated/high-tier account"
-    if doc_type == "incident_report" and "request_id_examples" in missing_fields:
-        return "Potential production incident with incomplete diagnostic evidence"
-    if edge_case and len(missing_fields) >= 2:
-        return "Multiple required fields missing for safe automated triage"
-    return None
-
-
 def generate_case(index: int, randomizer: random.Random, edge_rate: float) -> GeneratedCase:
     doc_type = weighted_choice(randomizer)
     edge_case = randomizer.random() < edge_rate
@@ -247,15 +225,20 @@ def generate_case(index: int, randomizer: random.Random, edge_rate: float) -> Ge
     region = randomizer.choice(REGIONS)
     channel = randomizer.choice(CHANNELS)
 
-    content, metadata, missing_fields = build_case_fields(doc_type, randomizer, edge_case)
+    content, metadata = build_case_fields(doc_type, randomizer, edge_case)
 
     if edge_case and randomizer.random() < 0.2:
         content += " Also seeing invoice anomalies this week."
 
-    priority, severity = compute_priority(doc_type, edge_case, tier, randomizer)
+    missing_fields = find_required_missing_fields(doc_type=doc_type, metadata=metadata)
+    priority, severity = infer_priority(doc_type, tier, missing_fields)
     queue = QUEUES[doc_type]
-    escalation_reason = escalation_reason_for(doc_type, missing_fields, tier, edge_case)
-    escalate = escalation_reason is not None
+    escalate, escalation_reason = should_escalate(
+        doc_type=doc_type,
+        customer_tier=tier,
+        missing_fields=missing_fields,
+        priority=priority,
+    )
 
     doc_id = f"DOC-{index:04d}"
     sample = {

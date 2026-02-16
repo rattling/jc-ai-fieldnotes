@@ -4,8 +4,8 @@
 
 | Mode | DocType Acc | Queue Acc | Escalation P | Escalation R | Missing Recall | Avg Elapsed ms | Avg Tool Calls | Step Patterns |
 |------|-------------|-----------|--------------|--------------|----------------|----------------|----------------|---------------|
-| workflow | 0.915 | 0.915 | 0.212 | 1.000 | 0.965 | 0.0 | 0.00 | 1 |
-| agent | 1.000 | 1.000 | 0.258 | 1.000 | 1.000 | 0.0 | 3.46 | 3 |
+| workflow | 0.925 | 0.925 | 0.500 | 1.000 | 0.970 | 1.0 | 0.00 | 1 |
+| agent | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.0 | 3.43 | 3 |
 
 ## Slices
 
@@ -13,47 +13,47 @@
 
 | Mode | Count | DocType Acc | Queue Acc |
 |------|-------|-------------|-----------|
-| workflow | 41 | 0.902 | 0.902 |
-| agent | 41 | 1.000 | 1.000 |
+| workflow | 33 | 0.909 | 0.909 |
+| agent | 33 | 1.000 | 1.000 |
 
 ### doc_type:billing_dispute
 
 | Mode | Count | DocType Acc | Queue Acc |
 |------|-------|-------------|-----------|
-| workflow | 35 | 0.886 | 0.886 |
-| agent | 35 | 1.000 | 1.000 |
+| workflow | 38 | 0.974 | 0.974 |
+| agent | 38 | 1.000 | 1.000 |
 
 ### doc_type:feature_request
 
 | Mode | Count | DocType Acc | Queue Acc |
 |------|-------|-------------|-----------|
-| workflow | 38 | 0.895 | 0.895 |
-| agent | 38 | 1.000 | 1.000 |
+| workflow | 43 | 0.907 | 0.907 |
+| agent | 43 | 1.000 | 1.000 |
 
 ### doc_type:incident_report
 
 | Mode | Count | DocType Acc | Queue Acc |
 |------|-------|-------------|-----------|
-| workflow | 52 | 0.962 | 0.962 |
-| agent | 52 | 1.000 | 1.000 |
+| workflow | 53 | 0.887 | 0.887 |
+| agent | 53 | 1.000 | 1.000 |
 
 ### doc_type:security_questionnaire
 
 | Mode | Count | DocType Acc | Queue Acc |
 |------|-------|-------------|-----------|
-| workflow | 34 | 0.912 | 0.912 |
-| agent | 34 | 1.000 | 1.000 |
+| workflow | 33 | 0.970 | 0.970 |
+| agent | 33 | 1.000 | 1.000 |
 
 ### slice:edge_case
 
 | Mode | Count | DocType Acc | Queue Acc |
 |------|-------|-------------|-----------|
-| workflow | 35 | 0.800 | 0.800 |
-| agent | 35 | 1.000 | 1.000 |
+| workflow | 30 | 0.800 | 0.800 |
+| agent | 30 | 1.000 | 1.000 |
 
 ### slice:non_edge_case
 
 | Mode | Count | DocType Acc | Queue Acc |
 |------|-------|-------------|-----------|
-| workflow | 165 | 0.939 | 0.939 |
-| agent | 165 | 1.000 | 1.000 |
+| workflow | 170 | 0.947 | 0.947 |
+| agent | 170 | 1.000 | 1.000 |

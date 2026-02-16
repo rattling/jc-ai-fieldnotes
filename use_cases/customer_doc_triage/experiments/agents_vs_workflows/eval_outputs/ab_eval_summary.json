@@ -2,94 +2,94 @@
   "corpus_size": 200,
   "modes": {
     "workflow": {
-      "doc_type_accuracy": 0.915,
-      "queue_accuracy": 0.915,
-      "escalation_precision": 0.2125,
+      "doc_type_accuracy": 0.925,
+      "queue_accuracy": 0.925,
+      "escalation_precision": 0.5,
       "escalation_recall": 1.0,
-      "missing_field_recall": 0.965,
-      "avg_elapsed_ms": 0.0,
+      "missing_field_recall": 0.97,
+      "avg_elapsed_ms": 1.0,
       "avg_tool_calls": 0.0,
       "distinct_step_patterns": 1,
       "slices": {
         "doc_type:security_questionnaire": {
-          "count": 34,
-          "doc_type_accuracy": 0.9117647058823529,
-          "queue_accuracy": 0.9117647058823529
-        },
-        "doc_type:billing_dispute": {
-          "count": 35,
-          "doc_type_accuracy": 0.8857142857142857,
-          "queue_accuracy": 0.8857142857142857
+          "count": 33,
+          "doc_type_accuracy": 0.9696969696969697,
+          "queue_accuracy": 0.9696969696969697
         },
         "doc_type:incident_report": {
-          "count": 52,
-          "doc_type_accuracy": 0.9615384615384616,
-          "queue_accuracy": 0.9615384615384616
-        },
-        "doc_type:access_request": {
-          "count": 41,
-          "doc_type_accuracy": 0.9024390243902439,
-          "queue_accuracy": 0.9024390243902439
+          "count": 53,
+          "doc_type_accuracy": 0.8867924528301887,
+          "queue_accuracy": 0.8867924528301887
         },
         "doc_type:feature_request": {
+          "count": 43,
+          "doc_type_accuracy": 0.9069767441860465,
+          "queue_accuracy": 0.9069767441860465
+        },
+        "doc_type:billing_dispute": {
           "count": 38,
-          "doc_type_accuracy": 0.8947368421052632,
-          "queue_accuracy": 0.8947368421052632
+          "doc_type_accuracy": 0.9736842105263158,
+          "queue_accuracy": 0.9736842105263158
+        },
+        "doc_type:access_request": {
+          "count": 33,
+          "doc_type_accuracy": 0.9090909090909091,
+          "queue_accuracy": 0.9090909090909091
         },
         "slice:edge_case": {
-          "count": 35,
+          "count": 30,
           "doc_type_accuracy": 0.8,
           "queue_accuracy": 0.8
         },
         "slice:non_edge_case": {
-          "count": 165,
-          "doc_type_accuracy": 0.9393939393939394,
-          "queue_accuracy": 0.9393939393939394
+          "count": 170,
+          "doc_type_accuracy": 0.9470588235294117,
+          "queue_accuracy": 0.9470588235294117
         }
       }
     },
     "agent": {
       "doc_type_accuracy": 1.0,
       "queue_accuracy": 1.0,
-      "escalation_precision": 0.25757575757575757,
+      "escalation_precision": 1.0,
       "escalation_recall": 1.0,
       "missing_field_recall": 1.0,
-      "avg_elapsed_ms": 0.0,
-      "avg_tool_calls": 3.465,
+      "avg_elapsed_ms": 1.0,
+      "avg_tool_calls": 3.43,
       "distinct_step_patterns": 3,
       "slices": {
         "doc_type:security_questionnaire": {
-          "count": 34,
-          "doc_type_accuracy": 1.0,
-          "queue_accuracy": 1.0
-        },
-        "doc_type:billing_dispute": {
-          "count": 35,
+          "count": 33,
           "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:incident_report": {
-          "count": 52,
-          "doc_type_accuracy": 1.0,
-          "queue_accuracy": 1.0
-        },
-        "doc_type:access_request": {
-          "count": 41,
+          "count": 53,
           "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "doc_type:feature_request": {
+          "count": 43,
+          "doc_type_accuracy": 1.0,
+          "queue_accuracy": 1.0
+        },
+        "doc_type:billing_dispute": {
           "count": 38,
           "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
+        "doc_type:access_request": {
+          "count": 33,
+          "doc_type_accuracy": 1.0,
+          "queue_accuracy": 1.0
+        },
         "slice:edge_case": {
-          "count": 35,
+          "count": 30,
           "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         },
         "slice:non_edge_case": {
-          "count": 165,
+          "count": 170,
           "doc_type_accuracy": 1.0,
           "queue_accuracy": 1.0
         }
