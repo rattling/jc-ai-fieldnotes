@@ -81,6 +81,8 @@ def test_eval_harness_generates_summary_and_artifacts(tmp_path: Path):
     assert summary["corpus_size"] == 2
     assert "workflow" in summary["modes"]
     assert "agent" in summary["modes"]
+    assert summary["modes"]["workflow"]["avg_elapsed_ms"] > 0
+    assert summary["modes"]["agent"]["avg_elapsed_ms"] > 0
 
     assert (output_dir / "ab_eval_summary.json").exists()
     assert (output_dir / "ab_eval_summary.md").exists()

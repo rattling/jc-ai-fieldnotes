@@ -4,8 +4,11 @@
 - [Finding 001: Core architectural distinction (design-phase)](#finding-001-core-architectural-distinction-design-phase)
 - [Finding 002: Shared safety boundary is preserved across A/B](#finding-002-shared-safety-boundary-is-preserved-across-ab)
 - [Finding 003: Agent mode outperforms workflow on this synthetic corpus](#finding-003-agent-mode-outperforms-workflow-on-this-synthetic-corpus)
+- [Finding 003b: The current deltas are statistically stable on this corpus](#finding-003b-the-current-deltas-are-statistically-stable-on-this-corpus)
+- [Finding 003c: Error taxonomy shows where workflow underperforms](#finding-003c-error-taxonomy-shows-where-workflow-underperforms)
 - [Finding 004: Diversity of execution paths is now measurable](#finding-004-diversity-of-execution-paths-is-now-measurable)
 - [Finding 005: Notebook rehydration/import reliability is resolved](#finding-005-notebook-rehydrationimport-reliability-is-resolved)
+- [Decision threshold rubric (workflow vs agent)](#decision-threshold-rubric-workflow-vs-agent)
 - [Implications and next experiments](#implications-and-next-experiments)
 
 ## Finding 001: Core architectural distinction (design-phase)
@@ -96,6 +99,37 @@ Observed from notebook aggregate metrics and `eval_outputs/ab_eval_summary.md`:
 Interpretation:
 - Agent mode currently provides a measurable quality lift, especially on edge-like and ambiguous samples, while preserving full escalation recall.
 
+## Finding 003b: The current deltas are statistically stable on this corpus
+**Paired bootstrap intervals suggest the observed quality lift is not a narrow noise artifact for this 200-row snapshot.**
+
+Using 4,000 paired bootstrap resamples over the current corpus (`agent - workflow`):
+- Doc-type accuracy delta: **+0.085** (95% CI: **+0.050 to +0.125**)
+- Queue accuracy delta: **+0.0847** (95% CI: **+0.050 to +0.125**)
+- Missing-field recall delta: **+0.0352** (95% CI: **+0.010 to +0.060**)
+
+Interpretation:
+- On this fixed synthetic distribution, the advantage is directionally robust.
+- This is still not external validity; we need broader corpora before production-level claims.
+
+## Finding 003c: Error taxonomy shows where workflow underperforms
+**Most residual errors are false-positive escalations in both modes, but workflow has additional classification/routing misses.**
+
+Per-case taxonomy (200 cases):
+
+| Error class | Workflow | Agent |
+|-------------|----------|-------|
+| clean_correct_all | 136 | 151 |
+| doc_type_mismatch | 17 | 0 |
+| queue_mismatch | 17 | 0 |
+| escalation_fp | 63 | 49 |
+| escalation_fn | 0 | 0 |
+| missing_field_incomplete | 7 | 0 |
+| multi_error_cases | 17 | 0 |
+
+Interpretation:
+- The biggest shared issue is conservative over-escalation (FP), not missed escalations (FN).
+- Agentic mode reduces both classification/routing and missing-field errors to zero on this snapshot.
+
 ## Finding 004: Diversity of execution paths is now measurable
 **The A/B gap is not only quality; it is also structural behavior.**
 
@@ -118,6 +152,22 @@ Observed from notebook run output:
 
 Interpretation:
 - The exploratory workflow is now reproducible for contributors without requiring prior editable install in all cases.
+
+## Decision threshold rubric (workflow vs agent)
+Use this rubric as the current policy draft for selecting orchestration mode:
+
+1. Prefer **workflow** when all are true:
+    - document mix is stable and low ambiguity,
+    - expected quality gain from agent mode is < 2 points on key metrics,
+    - lower operational complexity is prioritized.
+2. Prefer **agent** when any are true:
+    - quality gain is >= 3 points on doc-type or queue accuracy,
+    - missing-field recall gain is >= 2 points,
+    - heterogeneous/ambiguous case mix requires dynamic evidence gathering.
+3. Require additional mitigation before agent rollout when any are true:
+    - escalation precision drops below policy threshold,
+    - tool-call overhead breaches cost envelope,
+    - guardrail/fail-closed behavior is not consistently observable in tests and logs.
 
 ## Implications and next experiments
 1. Keep promoting reusable orchestration/eval logic into `customer_doc_triage` core; keep experiment folders focused on variable-specific deltas and artifacts.

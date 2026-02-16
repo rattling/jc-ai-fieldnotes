@@ -28,6 +28,7 @@ Optional one-command bootstrap/recovery path:
 
 ```bash
 ./scripts/setup_repo.sh
+./scripts/setup_repo.sh --scaffold
 ```
 
 ## Why this repo

@@ -139,4 +139,4 @@ def build_fail_closed_decision(
 
 
 def elapsed_ms_since(start: float) -> int:
-    return int((perf_counter() - start) * 1000)
+    return max(1, int((perf_counter() - start) * 1000))

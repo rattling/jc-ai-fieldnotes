@@ -102,8 +102,13 @@ jc-ai-fieldnotes/
 ./scripts/setup_repo.sh
 ```
 
+Optional recovery/bootstrap with path/file scaffolding:
+
+```bash
+./scripts/setup_repo.sh --scaffold
+```
+
 This script will:
-- scaffold missing folders/files for the baseline monorepo layout
 - create `.venv` using Python 3.11 (`uv venv -p 3.11`)
 - install core tooling (`ruff`, `pytest`, `hatchling`)
 - install local packages editable (`shared`, `customer_doc_triage`, `agents_vs_workflows`)

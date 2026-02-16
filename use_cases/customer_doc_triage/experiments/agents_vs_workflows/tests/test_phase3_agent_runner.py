@@ -43,6 +43,14 @@ def test_agent_runner_enforces_tool_budget_fail_closed():
     assert "max tool calls" in decision.escalation_reason.lower()
 
 
+def test_agent_runner_enforces_timeout_budget_fail_closed():
+    decision = run_agentic(_agent_input(), timeout_ms=-1)
+
+    assert decision.escalate is True
+    assert decision.escalation_reason is not None
+    assert "timeout" in decision.escalation_reason.lower()
+
+
 def test_agent_runner_dynamic_paths_differ_by_case_pattern():
     access_decision = run_agentic(_agent_input())
     incident_decision = run_agentic(
@@ -69,3 +77,4 @@ def test_agent_runner_integration_end_to_end_validates_output():
     assert decision.doc_id == "DOC-AG-001"
     assert decision.recommended_queue == "security_access"
     assert decision.decision_trace.tool_calls >= 1
+    assert decision.decision_trace.elapsed_ms > 0

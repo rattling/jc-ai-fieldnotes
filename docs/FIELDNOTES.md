@@ -106,6 +106,24 @@ So the significance is two-dimensional:
 - **Current outcome signal is positive for agent mode:** higher routing/classification quality on this synthetic corpus, with higher tool usage.
 - **Execution is reproducible:** notebook + eval flow now run reliably across typical local working-directory setups.
 
+## Adoption playbook (current draft)
+Use this as a practical product/engineering policy until broader real-world validation is complete.
+
+### Choose workflow-first when
+- cases are repetitive and policy interpretation is straightforward,
+- quality gaps versus agent mode are small,
+- operational simplicity and predictable behavior are the top priority.
+
+### Choose agent-first when
+- case ambiguity is high and evidence gathering order matters,
+- measurable quality lift justifies higher control-plane complexity,
+- guardrails are in place and validated (allowlist, budget, timeout, fail-closed).
+
+### Rollout recommendation
+- Start with **workflow as default** and **agent for targeted slices** (e.g., policy-heavy or ambiguous inputs).
+- Track quality deltas, escalation precision, and tool overhead in the same reporting loop.
+- Expand agent coverage only when lift is stable and operational risk stays within policy thresholds.
+
 ## Quick links
 ### Start here (non-technical to technical)
 - Use-case overview: [customer_doc_triage](../use_cases/customer_doc_triage/README.md)
