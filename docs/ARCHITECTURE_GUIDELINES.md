@@ -39,6 +39,29 @@ Dependencies point inward:
 
 Add heavier frameworks only when the experiment needs them.
 
+## Testing and evals
+Treat `pytest` and LLM evals as complementary, not interchangeable.
+
+- `pytest` covers deterministic correctness: domain rules, schema checks, policies, adapters, retries.
+- LLM eval harness covers behavioral quality on corpus runs: classification/routing quality, escalation quality, missing-field detection, latency/cost and failure slices.
+
+Minimum expectation for LLM experiments:
+1. unit/integration checks in `pytest`
+2. offline replay eval against fixed dataset snapshot
+3. run artifact capture (outputs + metrics) for A/B comparison over time
+
+`pytest` alone is not sufficient for model-behavior evaluation.
+
+## Framework policy (LangChain/LangGraph)
+Default stance: start with plain Python orchestration and explicit adapters.
+
+Adopt LangChain/LangGraph only when one or more are true:
+- orchestration complexity is obscuring intent in custom code
+- graph checkpointing/resume/human-in-loop is required
+- provider/tool abstractions are creating repetitive boilerplate
+
+If adopted, keep domain/application boundaries unchanged and treat framework code as adapter/orchestration infrastructure.
+
 ## Architectural invariants
 Maintain these through build:
 1. Domain rules are framework-agnostic.

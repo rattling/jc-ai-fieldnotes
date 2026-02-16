@@ -30,6 +30,14 @@ Downstream specialist resolution is out of scope.
 - **Decision:** Evaluate A and B on the same synthetic snapshot and shared metrics.
 - **Why:** Prevents data drift from distorting architecture comparison.
 
+### AD-06: Plain Python orchestration first, no LangChain/LangGraph initially
+- **Decision:** Implement A/B runners with plain Python orchestration and adapter interfaces in the first build.
+- **Why:** Keeps control flow explicit for architecture comparison, reduces framework overhead, and improves debuggability.
+
+### AD-07: `pytest` + LLM eval harness (both required)
+- **Decision:** Use `pytest` for deterministic checks and a corpus replay eval harness for behavior quality.
+- **Why:** `pytest` validates code correctness, while replay eval validates model-driven outcomes.
+
 ## Technology choices
 - Python 3.11 runtime
 - `pydantic` for boundary schemas
@@ -37,6 +45,8 @@ Downstream specialist resolution is out of scope.
 - JSONL corpus (`samples.jsonl`, `gold.jsonl`) for reproducible experiment inputs
 
 No heavy orchestration framework is required initially; simple runners are preferred for clarity.
+
+LangChain/LangGraph is deferred unless complexity triggers appear (checkpointing/resume, human-in-loop, or orchestration boilerplate dominating code).
 
 ## Component diagram
 ```mermaid
@@ -136,6 +146,28 @@ stateDiagram-v2
 3. No adapter dependency leakage into domain policy logic.
 4. All triage outcomes include trace metadata for debugging.
 5. Option B cannot bypass final schema/policy validation.
+6. Every architecture change is evaluated with both deterministic tests and replay eval metrics.
+
+## Evaluation architecture
+Use two complementary layers:
+
+1. Deterministic test layer (`pytest`)
+- schema validation behavior
+- routing/escalation policy behavior
+- retry/budget guardrail behavior
+- adapter contract behavior
+
+2. Behavioral replay layer (LLM eval harness)
+- run A and B on identical `samples.jsonl`
+- score against `gold.jsonl`
+- report both overall and slice metrics (doc type, edge case type)
+
+Core metrics to track:
+- doc-type classification accuracy
+- queue recommendation accuracy
+- escalation precision/recall
+- missing-required-field detection recall
+- latency and cost proxies (per-case and distribution)
 
 ## Risks to track
 - Option B latency/cost drift under tool loops.
@@ -147,3 +179,4 @@ stateDiagram-v2
 - observability model (event schema, correlation ids)
 - test strategy map (unit, contract, integration, replay)
 - failure taxonomy with mitigation playbooks
+- explicit framework adoption trigger review (when/if to introduce LangChain/LangGraph)
