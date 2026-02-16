@@ -37,17 +37,17 @@ Exit criteria:
 ## Phase 2 — Option A runner (fixed flow)
 
 ### 2.1 Runner implementation
-- [ ] Implement parse -> prompt -> validate -> route loop
-- [ ] Implement bounded repair retry path
-- [ ] Emit structured trace metadata
+- [x] Implement parse -> prompt -> validate -> route loop
+- [x] Implement bounded repair retry path
+- [x] Emit structured trace metadata
 
 ### 2.2 Tests
-- [ ] Unit tests for retry and validation behavior
-- [ ] Integration test on small fixture subset
+- [x] Unit tests for retry and validation behavior
+- [x] Integration test on small fixture subset
 
 Exit criteria:
-- [ ] Option A runs end-to-end on fixture corpus
-- [ ] Failure path escalates correctly
+- [x] Option A runs end-to-end on fixture corpus
+- [x] Failure path escalates correctly
 
 ## Phase 3 — Option B runner (dynamic flow)
 
