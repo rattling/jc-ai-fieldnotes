@@ -100,19 +100,11 @@ So the significance is two-dimensional:
 - **Outcome quality** can improve,
 - and **reasoning structure** changes in a measurable, explainable way.
 
-## What we learned so far (concise)
-1. **Core design difference is real and measurable.**
-   Workflow follows one fixed path; agent mode constructs different execution subgraphs for different circumstances.
-   In current runs we observe three recurring agent paths:
-   - **General triage path** (`detect_doc_type -> extract_metadata -> check_completeness`) for `billing_dispute`, `feature_request`, and `security_questionnaire`.
-   - **Incident path** (`detect_doc_type -> extract_metadata -> check_completeness -> risk_scan`) for `incident_report`.
-   - **Privileged-access/policy path** (`detect_doc_type -> lookup_policy_context -> risk_scan -> check_completeness`) for `access_request`.
-2. **Shared safety boundary matters.**
-   Both modes use the same schema/policy validation and fail-closed behavior, making the comparison fair.
-3. **Current synthetic results favor agent mode on quality metrics.**
-   On the current corpus, agent mode shows stronger classification/routing accuracy and missing-field recall, with higher tool usage.
-4. **Operational reliability improved.**
-   Notebook and run flow now rehydrate more reliably across environments.
+## Key takeaways
+- **Behavioral difference is concrete:** workflow stays on one path; agent selects among three observed subgraphs based on case context.
+- **Control model is explicit:** dynamic behavior is bounded by allowlists, budgets, timeout, and fail-closed validation.
+- **Current outcome signal is positive for agent mode:** higher routing/classification quality on this synthetic corpus, with higher tool usage.
+- **Execution is reproducible:** notebook + eval flow now run reliably across typical local working-directory setups.
 
 ## Quick links
 ### Start here (non-technical to technical)
