@@ -35,9 +35,6 @@ create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/ag
 create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/eval"
 create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/tests"
 create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/data"
-create_dir "experiments/tabular_baselines/src/tabular_baselines"
-create_dir "experiments/tabular_baselines/tests"
-create_dir "experiments/tabular_baselines/data"
 create_dir "shared/src/shared"
 create_dir "shared/tests"
 
@@ -48,7 +45,7 @@ line-length = 100
 target-version = \"py311\"
 
 [tool.pytest.ini_options]
-testpaths = [\"shared/tests\", \"experiments\", \"use_cases\"]
+testpaths = [\"shared/tests\", \"use_cases\"]
 addopts = \"-q\"
 "
 
@@ -123,23 +120,6 @@ build-backend = \"hatchling.build\"
 packages = [\"src/agents_vs_workflows\"]
 "
 
-write_if_missing "experiments/tabular_baselines/README.md" "# tabular_baselines\n\nType: CODED\nDepth: MVP\n"
-write_if_missing "experiments/tabular_baselines/src/tabular_baselines/__init__.py" ""
-write_if_missing "experiments/tabular_baselines/tests/test_tabular_baselines_smoke.py" "def test_tabular_smoke():\n    assert True\n"
-write_if_missing "experiments/tabular_baselines/pyproject.toml" "[project]
-name = \"tabular-baselines\"
-version = \"0.1.0\"
-requires-python = \">=3.11\"
-dependencies = []
-
-[build-system]
-requires = [\"hatchling\"]
-build-backend = \"hatchling.build\"
-
-[tool.hatch.build.targets.wheel]
-packages = [\"src/tabular_baselines\"]
-"
-
 if ! command -v uv >/dev/null 2>&1; then
   log "uv not found; install it first: https://docs.astral.sh/uv/"
   exit 1
@@ -154,8 +134,8 @@ uv pip install --python .venv/bin/python ruff pytest hatchling
 log "installing local packages in editable mode"
 uv pip install --python .venv/bin/python \
   -e shared \
-  -e use_cases/customer_doc_triage/experiments/agents_vs_workflows \
-  -e experiments/tabular_baselines
+  -e use_cases/customer_doc_triage \
+  -e use_cases/customer_doc_triage/experiments/agents_vs_workflows
 
 log "setup complete"
 log "activate with: source .venv/bin/activate"

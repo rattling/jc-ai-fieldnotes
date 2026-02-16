@@ -34,7 +34,7 @@ jc-ai-fieldnotes/
   .gitignore
 
   scripts/
-    setup_repo.sh                 # idempotent bootstrap (scaffold + venv + editable installs)
+    setup_repo.sh                 # idempotent bootstrap (venv + editable installs)
 
   shared/
     README.md
@@ -81,15 +81,6 @@ jc-ai-fieldnotes/
             samples.jsonl
             gold.jsonl
 
-  experiments/
-    tabular_baselines/
-      README.md
-      pyproject.toml
-      src/
-        tabular_baselines/
-          __init__.py
-      tests/
-      data/
 ```
 
 ### Naming conventions
@@ -115,7 +106,7 @@ This script will:
 - scaffold missing folders/files for the baseline monorepo layout
 - create `.venv` using Python 3.11 (`uv venv -p 3.11`)
 - install core tooling (`ruff`, `pytest`, `hatchling`)
-- install local packages editable (`shared`, `agents_vs_workflows`, `tabular_baselines`)
+- install local packages editable (`shared`, `customer_doc_triage`, `agents_vs_workflows`)
 
 Activate after bootstrap:
 - Linux/macOS:
@@ -134,7 +125,7 @@ Activate after bootstrap:
 ### Install shared + all experiments (editable)
 From repo root:
 ```bash
-uv pip install -e shared   -e use_cases/customer_doc_triage   -e use_cases/customer_doc_triage/experiments/agents_vs_workflows   -e experiments/tabular_baselines
+uv pip install -e shared   -e use_cases/customer_doc_triage   -e use_cases/customer_doc_triage/experiments/agents_vs_workflows
 ```
 
 This gives you:
@@ -161,7 +152,7 @@ line-length = 100
 target-version = "py311"
 
 [tool.pytest.ini_options]
-testpaths = ["shared/tests", "experiments", "use_cases"]
+testpaths = ["shared/tests", "use_cases"]
 addopts = "-q"
 ```
 
@@ -256,7 +247,7 @@ Evaluation harness compares:
 ## Implemented baseline
 
 Completed in repo:
-1) Scaffolded directory tree for `shared/`, `use_cases/customer_doc_triage/experiments/agents_vs_workflows/`, and `experiments/tabular_baselines`.
+1) Scaffolded directory tree for `shared/` and `use_cases/customer_doc_triage/experiments/agents_vs_workflows/`.
 2) Added root `pyproject.toml` with ruff/pytest config.
 3) Added installable `src/` packages for all baseline projects.
 4) Added `scripts/setup_repo.sh` for reproducible bootstrap.

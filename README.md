@@ -7,6 +7,29 @@ It focuses on how AI systems behave in context: with policy constraints, failure
 
 Focus: judgement, production realism, and system design.
 
+## Quick Start
+
+After cloning, from repo root:
+
+```bash
+uv venv -p 3.11
+uv pip install --python .venv/bin/python ruff pytest hatchling
+uv pip install --python .venv/bin/python -e shared -e use_cases/customer_doc_triage -e use_cases/customer_doc_triage/experiments/agents_vs_workflows
+source .venv/bin/activate
+```
+
+Verify everything is wired correctly by running the active coded experiment:
+
+```bash
+python use_cases/customer_doc_triage/experiments/agents_vs_workflows/scripts/run_agents_vs_workflows.py --mode both
+```
+
+Optional one-command bootstrap/recovery path:
+
+```bash
+./scripts/setup_repo.sh
+```
+
 ## Why this repo
 
 There are many examples of AI patterns in isolation. There are fewer examples that:
@@ -17,20 +40,13 @@ There are many examples of AI patterns in isolation. There are fewer examples th
 
 This repository is meant to be that kind of working field guide.
 
-## How this repo is organized
+## Entry points
 
-- **Use cases** hold realistic domain framing and reusable core code.
-- **Experiments** under each use case test specific hypotheses or design choices (A/B, iterative, or single-design).
-- **Findings** are recorded primarily at experiment level (to avoid duplicated or drifting summaries at repo root), with top-level links for navigation.
-
-## Field Notes
-
-- [Repository field notes (reader-friendly guide)](docs/FIELDNOTES.md)
-- [Current detailed findings: agents_vs_workflows](use_cases/customer_doc_triage/experiments/agents_vs_workflows/docs/FIELDNOTES.md)
-
-## Architecture
-
-- [Architecture guidelines for all experiments](docs/ARCHITECTURE_GUIDELINES.md)
+Read first:
+- [Repository field notes](docs/FIELDNOTES.md)
+- [Use case: customer_doc_triage](use_cases/customer_doc_triage/README.md)
+- [Experiment: agents_vs_workflows](use_cases/customer_doc_triage/experiments/agents_vs_workflows/README.md)
+- [Detailed findings: agents_vs_workflows](use_cases/customer_doc_triage/experiments/agents_vs_workflows/docs/FIELDNOTES.md)
 
 ## Use Cases
 
@@ -40,6 +56,22 @@ This repository is meant to be that kind of working field guide.
 
 Use-case shared code for `customer_doc_triage` lives in `use_cases/customer_doc_triage/src/customer_doc_triage`, while experiment folders keep run-mode specifics, eval artifacts, and notebooks.
 
+## Experiments
+
+| Name | Status | Type | Focus |
+|------|--------|------|-------|
+| use_cases/customer_doc_triage/experiments/agents_vs_workflows | ACTIVE | CODED | Agentic vs constrained workflows in document triage |
+
+## How this repo is organized
+
+- **Use cases** hold realistic domain framing and reusable core code.
+- **Experiments** under each use case test specific hypotheses or design choices (A/B, iterative, or single-design).
+- **Findings** are recorded primarily at experiment level (to avoid duplicated or drifting summaries at repo root), with top-level links for navigation.
+
+## Architecture
+
+- [Architecture guidelines for all experiments](docs/ARCHITECTURE_GUIDELINES.md)
+
 ## Contributor Workflow
 
 For use-case work, follow this promotion loop:
@@ -48,30 +80,4 @@ For use-case work, follow this promotion loop:
 - Keep experiment-specific plans, notebooks, and eval outputs inside the experiment folder.
 - Promote validated reusable logic into the use-case package; keep experiment wrappers thin.
 
-## Experiments
 
-| Name | Status | Type | Focus |
-|------|--------|------|-------|
-| use_cases/customer_doc_triage/experiments/agents_vs_workflows | ACTIVE | CODED | Agentic vs constrained workflows in document triage |
-| experiments/tabular_baselines | TODO | CODED | Modern tabular ML vs deep tabular models |
-
-
-## Setup
-
-Run once from repo root:
-
-```bash
-./scripts/setup_repo.sh
-```
-
-This script will:
-- scaffold the repo layout (if missing)
-- create `.venv` with Python 3.11 via `uv`
-- install core tooling (`ruff`, `pytest`, `hatchling`)
-- install local packages in editable mode
-
-Activate the environment:
-
-```bash
-source .venv/bin/activate
-```
