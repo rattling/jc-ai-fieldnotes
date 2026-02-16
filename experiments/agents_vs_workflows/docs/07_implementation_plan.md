@@ -52,18 +52,18 @@ Exit criteria:
 ## Phase 3 — Option B runner (dynamic flow)
 
 ### 3.1 Guardrailed agent loop
-- [ ] Implement tool allowlist
-- [ ] Implement max tool calls and timeout budget
-- [ ] Implement stop criteria and final output assembly
-- [ ] Enforce mandatory final schema/policy validation
+- [x] Implement tool allowlist
+- [x] Implement max tool calls and timeout budget
+- [x] Implement stop criteria and final output assembly
+- [x] Enforce mandatory final schema/policy validation
 
 ### 3.2 Tests
-- [ ] Unit tests for budget and allowlist enforcement
-- [ ] Integration test with at least two distinct case patterns
+- [x] Unit tests for budget and allowlist enforcement
+- [x] Integration test with at least two distinct case patterns
 
 Exit criteria:
-- [ ] Option B shows case-dependent subgraph behavior
-- [ ] Guardrail violations always fail closed (escalate)
+- [x] Option B shows case-dependent subgraph behavior
+- [x] Guardrail violations always fail closed (escalate)
 
 ## Phase 4 — Replay eval harness (A vs B)
 
