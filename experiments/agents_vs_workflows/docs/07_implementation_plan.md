@@ -15,24 +15,24 @@ Status legend:
 ## Phase 1 — Shared contracts and core plumbing
 
 ### 1.1 Triage contracts
-- [ ] Define input schema (`TriageInput`)
-- [ ] Define output schema (`TriageDecision`)
-- [ ] Define trace metadata schema (`DecisionTrace`)
-- [ ] Add schema validation tests
+- [x] Define input schema (`TriageInput`)
+- [x] Define output schema (`TriageDecision`)
+- [x] Define trace metadata schema (`DecisionTrace`)
+- [x] Add schema validation tests
 
 Exit criteria:
-- [ ] All schemas load and validate via `pytest`
-- [ ] Output schema supports both A and B without mode-specific fields
+- [x] All schemas load and validate via `pytest`
+- [x] Output schema supports both A and B without mode-specific fields
 
 ### 1.2 Shared policy and validation
-- [ ] Implement required-field policy checks
-- [ ] Implement routing policy mapping
-- [ ] Implement escalation policy checks
-- [ ] Add deterministic policy tests
+- [x] Implement required-field policy checks
+- [x] Implement routing policy mapping
+- [x] Implement escalation policy checks
+- [x] Add deterministic policy tests
 
 Exit criteria:
-- [ ] Policy behavior covered for happy-path and edge cases
-- [ ] No adapter imports in domain/policy modules
+- [x] Policy behavior covered for happy-path and edge cases
+- [x] No adapter imports in domain/policy modules
 
 ## Phase 2 — Option A runner (fixed flow)
 
