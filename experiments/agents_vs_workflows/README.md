@@ -43,6 +43,24 @@ Outputs:
 - `experiments/agents_vs_workflows/eval_outputs/ab_eval_summary.md`
 - `experiments/agents_vs_workflows/eval_outputs/per_case_predictions.csv`
 
+## CLI runner (VS Code friendly)
+Primary run script with default args (works via VS Code Run button):
+
+```bash
+python experiments/agents_vs_workflows/scripts/run_agents_vs_workflows.py
+```
+
+Useful optional args:
+- `--mode workflow|agent|both|eval` (default: `both`)
+- `--limit 10` for quick subset runs
+- `--samples ...` / `--gold ...` / `--out ...`
+
+VS Code launch presets are in `.vscode/launch.json`.
+
+## Notebook walkthrough
+Illustrative side-by-side notebook:
+- `experiments/agents_vs_workflows/notebooks/ab_comparison_walkthrough.ipynb`
+
 ## What comes next
 1. Create synthetic customer documents in `data/`.
 2. Build shared ingestion/schema/eval components.
