@@ -20,7 +20,7 @@ This repository is meant to be that kind of working field guide.
 ## How this repo is organized
 
 - **Use cases** hold realistic domain framing and reusable core code.
-- **Experiments** under each use case test specific design choices (A/B style).
+- **Experiments** under each use case test specific hypotheses or design choices (A/B, iterative, or single-design).
 - **Findings** are recorded primarily at experiment level (to avoid duplicated or drifting summaries at repo root), with top-level links for navigation.
 
 ## Field Notes
