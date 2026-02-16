@@ -138,15 +138,14 @@ uv pip install -e shared   -e use_cases/customer_doc_triage   -e use_cases/custo
 ```
 
 This gives you:
-- Absolute imports (clean): `from agents_vs_workflows.workflow.pipeline import ...`
+- Absolute imports (clean): `from customer_doc_triage.workflow.pipeline import ...`
 - One environment to run everything
 - Experiments remain independently installable (each has its own `pyproject.toml`)
 
 ### Running a module (example)
 ```bash
-python -m agents_vs_workflows.workflow.run
-python -m agents_vs_workflows.agent.run
-python -m agents_vs_workflows.eval.report
+python use_cases/customer_doc_triage/experiments/agents_vs_workflows/scripts/run_agents_vs_workflows.py --mode both
+python -m customer_doc_triage.eval.report
 ```
 
 ---

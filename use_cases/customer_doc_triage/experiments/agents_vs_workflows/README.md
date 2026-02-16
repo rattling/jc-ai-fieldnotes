@@ -13,7 +13,7 @@ Goal: isolate when agentic behavior adds meaningful value over constrained workf
 ## Relation to use-case core
 - Shared triage/runtime logic belongs in `use_cases/customer_doc_triage/src/customer_doc_triage`.
 - This experiment folder holds experiment-specific docs, notebook workflow, and evaluation artifacts.
-- Local package modules should remain thin wrappers/glue over use-case core where possible.
+- Runtime execution imports should target `customer_doc_triage` directly.
 
 ## Descriptive docs (start here)
 - [Fieldnotes](docs/FIELDNOTES.md)
@@ -40,7 +40,7 @@ Outputs:
 Run deterministic replay evaluation on shared corpus snapshot:
 
 ```bash
-python -m agents_vs_workflows.eval.report
+python -m customer_doc_triage.eval.report
 ```
 
 Outputs:
