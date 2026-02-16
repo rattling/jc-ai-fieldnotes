@@ -18,6 +18,7 @@ Goal: isolate when agentic behavior adds meaningful value over constrained workf
 - [LLM replacement + Design A/B + ADR](docs/04_target_designs_and_adr.md)
 - [Synthetic data plan](docs/05_synthetic_data_plan.md)
 - [Architecture](docs/06_architecture.md)
+- [Implementation plan and rehydration protocol](docs/07_implementation_plan.md)
 
 ## Synthetic corpus generation
 Generate reproducible dataset artifacts:
