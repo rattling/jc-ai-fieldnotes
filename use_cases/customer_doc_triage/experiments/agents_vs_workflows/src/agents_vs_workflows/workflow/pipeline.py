@@ -21,6 +21,7 @@ def run_workflow(triage_input: TriageInput | dict, max_retries: int = 1) -> Tria
 
 	parsed_input = triage_input if isinstance(triage_input, TriageInput) else TriageInput(**triage_input)
 	force_failure = bool(parsed_input.metadata.get("_force_validation_failure", False))
+	force_retry_once = bool(parsed_input.metadata.get("_force_retry_once", False))
 
 	for attempt in range(max_retries + 1):
 		retry_count = attempt
@@ -32,8 +33,7 @@ def run_workflow(triage_input: TriageInput | dict, max_retries: int = 1) -> Tria
 
 		steps.append(f"build_candidate_attempt_{attempt}")
 
-		doc_id_override = f"{parsed_input.doc_id}-draft" if attempt == 0 else None
-		queue_override = "invalid_queue" if force_failure else None
+		queue_override = "invalid_queue" if (force_failure or (force_retry_once and attempt == 0)) else None
 
 		try:
 			decision = build_decision(
@@ -47,7 +47,6 @@ def run_workflow(triage_input: TriageInput | dict, max_retries: int = 1) -> Tria
 				model_name="heuristic-v1",
 				confidence=0.78 if attempt == 0 else 0.86,
 				rationale="Fixed workflow triage with bounded repair loop.",
-				doc_id_override=doc_id_override,
 				queue_override=queue_override,
 			)
 		except ValidationError:

@@ -74,6 +74,6 @@ Default target for edge-case share: ~30% of corpus.
 
 ## Next Build Step
 Implement generator script:
-- path: `experiments/agents_vs_workflows/scripts/generate_synthetic_data.py`
+- path: `use_cases/customer_doc_triage/experiments/agents_vs_workflows/scripts/generate_synthetic_data.py`
 - command:
-  - `python experiments/agents_vs_workflows/scripts/generate_synthetic_data.py --count 200 --seed 42`
+  - `python use_cases/customer_doc_triage/experiments/agents_vs_workflows/scripts/generate_synthetic_data.py --count 200 --seed 42`

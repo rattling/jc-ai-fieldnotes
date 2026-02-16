@@ -16,7 +16,7 @@ The goal is to make this repo:
 - **One virtualenv at repo root** (Python 3.11).
 - Each experiment has its own `pyproject.toml` with its own dependencies.
 - You “workspace-install” by installing **each package editable** into the one root venv:
-  - `uv pip install -e shared -e experiments/agents_vs_workflows ...`
+  - `uv pip install -e shared -e use_cases/customer_doc_triage/experiments/agents_vs_workflows ...`
 - This produces a **single environment** containing the union of dependencies across installed packages, while preserving per-experiment packaging boundaries.
 
 This is *functionally* a workspace even if we don’t rely on any specific uv “workspace” TOML schema that might change over time.
@@ -46,34 +46,37 @@ jc-ai-fieldnotes/
         eval_utils.py             # optional shared eval helpers
     tests/
 
-  experiments/
-    agents_vs_workflows/
-      README.md
-      pyproject.toml
-      src/
+  use_cases/
+    customer_doc_triage/
+      experiments/
         agents_vs_workflows/
-          __init__.py
-          config.py
-          workflow/
-            __init__.py
-            run.py
-            pipeline.py
-            schemas.py
-          agent/
-            __init__.py
-            run.py
-            tools.py
-            planner.py
-            schemas.py
-          eval/
-            __init__.py
-            metrics.py
-            report.py
-      tests/
-      data/
-        samples.jsonl
-        gold.jsonl
+          README.md
+          pyproject.toml
+          src/
+            agents_vs_workflows/
+              __init__.py
+              config.py
+              workflow/
+                __init__.py
+                run.py
+                pipeline.py
+                schemas.py
+              agent/
+                __init__.py
+                run.py
+                tools.py
+                planner.py
+                schemas.py
+              eval/
+                __init__.py
+                metrics.py
+                report.py
+          tests/
+          data/
+            samples.jsonl
+            gold.jsonl
 
+  experiments/
     tabular_baselines/
       README.md
       pyproject.toml
@@ -126,7 +129,7 @@ Activate after bootstrap:
 ### Install shared + all experiments (editable)
 From repo root:
 ```bash
-uv pip install -e shared   -e experiments/agents_vs_workflows   -e experiments/tabular_baselines
+uv pip install -e shared   -e use_cases/customer_doc_triage/experiments/agents_vs_workflows   -e experiments/tabular_baselines
 ```
 
 This gives you:
@@ -154,7 +157,7 @@ line-length = 100
 target-version = "py311"
 
 [tool.pytest.ini_options]
-testpaths = ["shared/tests", "experiments"]
+testpaths = ["shared/tests", "experiments", "use_cases"]
 addopts = "-q"
 ```
 
@@ -249,7 +252,7 @@ Evaluation harness compares:
 ## Implemented baseline
 
 Completed in repo:
-1) Scaffolded directory tree for `shared/`, `experiments/agents_vs_workflows/`, and `experiments/tabular_baselines`.
+1) Scaffolded directory tree for `shared/`, `use_cases/customer_doc_triage/experiments/agents_vs_workflows/`, and `experiments/tabular_baselines`.
 2) Added root `pyproject.toml` with ruff/pytest config.
 3) Added installable `src/` packages for all baseline projects.
 4) Added `scripts/setup_repo.sh` for reproducible bootstrap.

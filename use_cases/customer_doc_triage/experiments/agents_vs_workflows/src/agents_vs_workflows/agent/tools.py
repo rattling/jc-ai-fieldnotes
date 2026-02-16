@@ -20,8 +20,22 @@ def available_tools() -> list[str]:
 
 
 def detect_doc_type_tool(triage_input: TriageInput) -> dict[str, Any]:
-	doc_type = detect_doc_type(triage_input.content, triage_input.doc_type_hint)
-	return {"doc_type": doc_type}
+	metadata = triage_input.metadata
+
+	metadata_to_doc_type = [
+		("requested_role", "access_request"),
+		("framework", "security_questionnaire"),
+		("issue_type", "billing_dispute"),
+		("service", "incident_report"),
+		("product_area", "feature_request"),
+	]
+
+	for key, doc_type in metadata_to_doc_type:
+		if key in metadata:
+			return {"doc_type": doc_type, "source": f"metadata:{key}"}
+
+	doc_type = detect_doc_type(triage_input.content, None)
+	return {"doc_type": doc_type, "source": "content"}
 
 
 def extract_metadata_tool(triage_input: TriageInput) -> dict[str, Any]:

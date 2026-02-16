@@ -66,6 +66,13 @@ def weighted_choice(randomizer: random.Random) -> str:
     return randomizer.choices(DOC_TYPES, weights=DOC_TYPE_WEIGHTS, k=1)[0]
 
 
+def make_doc_type_hint(doc_type: str, randomizer: random.Random, edge_case: bool) -> str:
+    if edge_case and randomizer.random() < 0.35:
+        alternatives = [candidate for candidate in DOC_TYPES if candidate != doc_type]
+        return randomizer.choice(alternatives).replace("_", " ")
+    return doc_type.replace("_", " ")
+
+
 def maybe_missing_tier(randomizer: random.Random, edge_case: bool) -> str | None:
     if edge_case and randomizer.random() < 0.35:
         return None
@@ -258,7 +265,7 @@ def generate_case(index: int, randomizer: random.Random, edge_rate: float) -> Ge
         "customer_tier": tier,
         "region": region,
         "submitted_at": make_timestamp(randomizer),
-        "doc_type_hint": doc_type.replace("_", " "),
+        "doc_type_hint": make_doc_type_hint(doc_type, randomizer, edge_case),
         "content": content,
         "metadata": metadata,
     }

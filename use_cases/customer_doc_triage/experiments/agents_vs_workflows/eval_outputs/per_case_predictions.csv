@@ -1,0 +1,401 @@
+mode,doc_id,doc_type,priority,recommended_queue,escalate,escalation_reason,confidence,required_missing_fields,tool_calls,elapsed_ms
+workflow,DOC-0001,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0002,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0003,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0004,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0005,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0006,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0007,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0008,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0009,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0010,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0011,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.78,"requested_role,justification,approval_reference",0,0
+workflow,DOC-0012,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0013,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0014,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0015,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.78,approval_reference,0,0
+workflow,DOC-0016,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0017,billing_dispute,P2,billing_ops,True,Multiple required fields missing for safe automated triage,0.78,"issue_type,invoice_id",0,0
+workflow,DOC-0018,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0019,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.78,approval_reference,0,0
+workflow,DOC-0020,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0021,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0022,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0023,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0024,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0025,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0026,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0027,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0028,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0029,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0030,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0031,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0032,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0033,feature_request,P3,product_feedback,True,Multiple required fields missing for safe automated triage,0.78,"product_area,business_justification",0,0
+workflow,DOC-0034,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0035,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0036,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0037,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0038,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0039,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.78,"requested_role,justification,approval_reference",0,0
+workflow,DOC-0040,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0041,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0042,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0043,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0044,security_questionnaire,P1,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0045,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0046,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0047,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0048,security_questionnaire,P1,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0049,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.78,approval_reference,0,0
+workflow,DOC-0050,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0051,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0052,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0053,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.78,"requested_role,justification,approval_reference",0,0
+workflow,DOC-0054,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0055,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0056,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0057,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0058,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0059,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0060,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0061,security_questionnaire,P1,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0062,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0063,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0064,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0065,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0066,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0067,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0068,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.78,"justification,approval_reference",0,0
+workflow,DOC-0069,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0070,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0071,feature_request,P3,product_feedback,True,Multiple required fields missing for safe automated triage,0.78,"product_area,business_justification",0,0
+workflow,DOC-0072,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0073,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0074,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0075,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0076,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.78,"requested_role,justification,approval_reference",0,0
+workflow,DOC-0077,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0078,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0079,billing_dispute,P2,billing_ops,True,Multiple required fields missing for safe automated triage,0.78,"issue_type,invoice_id",0,0
+workflow,DOC-0080,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0081,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,"service,region,request_id_examples",0,0
+workflow,DOC-0082,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0083,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0084,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0085,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0086,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0087,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0088,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.78,approval_reference,0,0
+workflow,DOC-0089,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0090,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0091,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0092,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0093,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0094,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0095,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,"service,region,request_id_examples",0,0
+workflow,DOC-0096,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0097,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0098,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0099,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0100,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0101,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0102,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0103,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0104,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,"service,region,request_id_examples",0,0
+workflow,DOC-0105,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0106,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0107,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0108,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0109,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0110,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0111,security_questionnaire,P1,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0112,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0113,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0114,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0115,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0116,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0117,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0118,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0119,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.78,approval_reference,0,0
+workflow,DOC-0120,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0121,billing_dispute,P2,billing_ops,True,Multiple required fields missing for safe automated triage,0.78,"issue_type,invoice_id",0,0
+workflow,DOC-0122,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0123,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0124,feature_request,P3,product_feedback,True,Multiple required fields missing for safe automated triage,0.78,"product_area,business_justification",0,0
+workflow,DOC-0125,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.78,approval_reference,0,0
+workflow,DOC-0126,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0127,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0128,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0129,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0130,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0131,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0132,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0133,security_questionnaire,P1,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0134,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0135,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0136,security_questionnaire,P2,compliance_ops,True,Multiple required fields missing for safe automated triage,0.78,"framework,required_due_date",0,0
+workflow,DOC-0137,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0138,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.78,"requested_role,justification,approval_reference",0,0
+workflow,DOC-0139,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.78,"justification,approval_reference",0,0
+workflow,DOC-0140,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0141,feature_request,P3,product_feedback,True,Multiple required fields missing for safe automated triage,0.78,"product_area,business_justification",0,0
+workflow,DOC-0142,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0143,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0144,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.78,approval_reference,0,0
+workflow,DOC-0145,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0146,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.78,approval_reference,0,0
+workflow,DOC-0147,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0148,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0149,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0150,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0151,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0152,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0153,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.78,"justification,approval_reference",0,0
+workflow,DOC-0154,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0155,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0156,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0157,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0158,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0159,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0160,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0161,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0162,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0163,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0164,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0165,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0166,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0167,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0168,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0169,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0170,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.78,"justification,approval_reference",0,0
+workflow,DOC-0171,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0172,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0173,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0174,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0175,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0176,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0177,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0178,security_questionnaire,P2,compliance_ops,True,Multiple required fields missing for safe automated triage,0.78,"framework,required_due_date",0,0
+workflow,DOC-0179,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0180,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0181,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0182,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0183,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0184,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0185,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0186,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0187,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0188,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0189,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0190,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0191,feature_request,P3,product_feedback,False,,0.78,business_justification,0,0
+workflow,DOC-0192,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0193,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0194,security_questionnaire,P2,compliance_ops,False,,0.78,required_due_date,0,0
+workflow,DOC-0195,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.78,request_id_examples,0,0
+workflow,DOC-0196,billing_dispute,P2,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0197,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+workflow,DOC-0198,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.78,"justification,approval_reference",0,0
+workflow,DOC-0199,billing_dispute,P1,billing_ops,False,,0.78,invoice_id,0,0
+workflow,DOC-0200,access_request,P2,security_access,False,,0.78,approval_reference,0,0
+agent,DOC-0001,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0002,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0003,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0004,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0005,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0006,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0007,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0008,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0009,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0010,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0011,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0012,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0013,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0014,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0015,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.84,approval_reference,4,0
+agent,DOC-0016,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0017,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0018,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0019,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.84,approval_reference,4,0
+agent,DOC-0020,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0021,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0022,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0023,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0024,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0025,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0026,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0027,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0028,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0029,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0030,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0031,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0032,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0033,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0034,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0035,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0036,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0037,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0038,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0039,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0040,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0041,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0042,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0043,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0044,security_questionnaire,P1,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0045,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0046,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0047,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0048,security_questionnaire,P1,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0049,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.84,approval_reference,4,0
+agent,DOC-0050,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0051,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0052,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0053,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0054,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0055,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0056,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0057,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0058,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0059,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0060,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0061,security_questionnaire,P1,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0062,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0063,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0064,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0065,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0066,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0067,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0068,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.84,"justification,approval_reference",4,0
+agent,DOC-0069,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0070,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0071,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0072,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0073,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0074,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0075,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0076,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0077,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0078,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0079,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0080,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0081,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0082,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0083,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0084,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0085,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0086,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0087,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0088,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.84,approval_reference,4,0
+agent,DOC-0089,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0090,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0091,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0092,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0093,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0094,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0095,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0096,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0097,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0098,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0099,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0100,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0101,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0102,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0103,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0104,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0105,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0106,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0107,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0108,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0109,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0110,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0111,security_questionnaire,P1,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0112,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0113,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0114,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0115,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0116,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0117,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0118,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0119,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.84,approval_reference,4,0
+agent,DOC-0120,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0121,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0122,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0123,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0124,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0125,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.84,approval_reference,4,0
+agent,DOC-0126,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0127,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0128,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0129,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0130,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0131,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0132,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0133,security_questionnaire,P1,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0134,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0135,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0136,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.84,"justification,approval_reference",4,0
+agent,DOC-0137,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0138,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0139,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.84,"justification,approval_reference",4,0
+agent,DOC-0140,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0141,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0142,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0143,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0144,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.84,approval_reference,4,0
+agent,DOC-0145,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0146,access_request,P1,security_access,True,Privileged access request for regulated/high-tier account,0.84,approval_reference,4,0
+agent,DOC-0147,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0148,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0149,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0150,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0151,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0152,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0153,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.84,"justification,approval_reference",4,0
+agent,DOC-0154,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0155,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0156,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0157,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0158,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0159,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0160,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0161,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0162,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0163,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0164,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0165,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0166,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0167,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0168,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0169,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0170,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.84,"justification,approval_reference",4,0
+agent,DOC-0171,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0172,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0173,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0174,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0175,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0176,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0177,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0178,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0179,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0180,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0181,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0182,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0183,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0184,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0185,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0186,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0187,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0188,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0189,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0190,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0191,feature_request,P3,product_feedback,False,,0.84,business_justification,3,0
+agent,DOC-0192,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0193,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0194,security_questionnaire,P2,compliance_ops,False,,0.84,required_due_date,3,0
+agent,DOC-0195,incident_report,P1,support_incident,True,Potential production incident with incomplete diagnostic evidence,0.84,request_id_examples,4,0
+agent,DOC-0196,billing_dispute,P2,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0197,access_request,P2,security_access,False,,0.84,approval_reference,4,0
+agent,DOC-0198,access_request,P2,security_access,True,Multiple required fields missing for safe automated triage,0.84,"justification,approval_reference",4,0
+agent,DOC-0199,billing_dispute,P1,billing_ops,False,,0.84,invoice_id,3,0
+agent,DOC-0200,access_request,P2,security_access,False,,0.84,approval_reference,4,0

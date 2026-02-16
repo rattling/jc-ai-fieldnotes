@@ -30,16 +30,16 @@ log "scaffolding repository layout"
 
 create_dir "scripts"
 create_dir "docs"
-create_dir "shared/src/shared"
-create_dir "shared/tests"
-create_dir "experiments/agents_vs_workflows/src/agents_vs_workflows/workflow"
-create_dir "experiments/agents_vs_workflows/src/agents_vs_workflows/agent"
-create_dir "experiments/agents_vs_workflows/src/agents_vs_workflows/eval"
-create_dir "experiments/agents_vs_workflows/tests"
-create_dir "experiments/agents_vs_workflows/data"
+create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/workflow"
+create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/agent"
+create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/eval"
+create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/tests"
+create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/data"
 create_dir "experiments/tabular_baselines/src/tabular_baselines"
 create_dir "experiments/tabular_baselines/tests"
 create_dir "experiments/tabular_baselines/data"
+create_dir "shared/src/shared"
+create_dir "shared/tests"
 
 write_if_missing ".python-version" "3.11\n"
 
@@ -48,7 +48,7 @@ line-length = 100
 target-version = \"py311\"
 
 [tool.pytest.ini_options]
-testpaths = [\"shared/tests\", \"experiments\"]
+testpaths = [\"shared/tests\", \"experiments\", \"use_cases\"]
 addopts = \"-q\"
 "
 
@@ -71,25 +71,25 @@ build-backend = \"hatchling.build\"
 packages = [\"src/shared\"]
 "
 
-write_if_missing "experiments/agents_vs_workflows/README.md" "# agents_vs_workflows\n\nType: CODED\nDepth: MVP\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/__init__.py" ""
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/config.py" "MODEL_NAME = \"gpt-4.1-mini\"\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/workflow/__init__.py" ""
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/workflow/pipeline.py" "def run_workflow() -> dict:\n    return {\"mode\": \"workflow\", \"status\": \"ok\"}\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/workflow/run.py" "from agents_vs_workflows.workflow.pipeline import run_workflow\n\n\ndef main() -> None:\n    print(run_workflow())\n\n\nif __name__ == \"__main__\":\n    main()\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/workflow/schemas.py" "from pydantic import BaseModel\n\n\nclass WorkflowResult(BaseModel):\n    mode: str\n    status: str\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/agent/__init__.py" ""
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/agent/tools.py" "def available_tools() -> list[str]:\n    return [\"search\", \"summarize\"]\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/agent/planner.py" "def plan(task: str) -> list[str]:\n    return [f\"analyze: {task}\", \"respond\"]\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/agent/schemas.py" "from pydantic import BaseModel\n\n\nclass AgentResult(BaseModel):\n    mode: str\n    steps: int\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/agent/run.py" "from agents_vs_workflows.agent.planner import plan\n\n\ndef main() -> None:\n    steps = plan(\"demo\")\n    print({\"mode\": \"agent\", \"steps\": len(steps)})\n\n\nif __name__ == \"__main__\":\n    main()\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/eval/__init__.py" ""
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/eval/metrics.py" "def score() -> float:\n    return 1.0\n"
-write_if_missing "experiments/agents_vs_workflows/src/agents_vs_workflows/eval/report.py" "from agents_vs_workflows.eval.metrics import score\n\n\ndef main() -> None:\n    print({\"metric\": score()})\n\n\nif __name__ == \"__main__\":\n    main()\n"
-write_if_missing "experiments/agents_vs_workflows/tests/test_agents_vs_workflows_smoke.py" "from agents_vs_workflows.workflow.pipeline import run_workflow\n\n\ndef test_workflow_smoke():\n    assert run_workflow()[\"status\"] == \"ok\"\n"
-write_if_missing "experiments/agents_vs_workflows/data/samples.jsonl" ""
-write_if_missing "experiments/agents_vs_workflows/data/gold.jsonl" ""
-write_if_missing "experiments/agents_vs_workflows/pyproject.toml" "[project]
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/README.md" "# agents_vs_workflows\n\nType: CODED\nDepth: MVP\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/__init__.py" ""
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/config.py" "MODEL_NAME = \"gpt-4.1-mini\"\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/workflow/__init__.py" ""
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/workflow/pipeline.py" "def run_workflow() -> dict:\n    return {\"mode\": \"workflow\", \"status\": \"ok\"}\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/workflow/run.py" "from agents_vs_workflows.workflow.pipeline import run_workflow\n\n\ndef main() -> None:\n    print(run_workflow())\n\n\nif __name__ == \"__main__\":\n    main()\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/workflow/schemas.py" "from pydantic import BaseModel\n\n\nclass WorkflowResult(BaseModel):\n    mode: str\n    status: str\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/agent/__init__.py" ""
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/agent/tools.py" "def available_tools() -> list[str]:\n    return [\"search\", \"summarize\"]\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/agent/planner.py" "def plan(task: str) -> list[str]:\n    return [f\"analyze: {task}\", \"respond\"]\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/agent/schemas.py" "from pydantic import BaseModel\n\n\nclass AgentResult(BaseModel):\n    mode: str\n    steps: int\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/agent/run.py" "from agents_vs_workflows.agent.planner import plan\n\n\ndef main() -> None:\n    steps = plan(\"demo\")\n    print({\"mode\": \"agent\", \"steps\": len(steps)})\n\n\nif __name__ == \"__main__\":\n    main()\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/eval/__init__.py" ""
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/eval/metrics.py" "def score() -> float:\n    return 1.0\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/eval/report.py" "from agents_vs_workflows.eval.metrics import score\n\n\ndef main() -> None:\n    print({\"metric\": score()})\n\n\nif __name__ == \"__main__\":\n    main()\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/tests/test_agents_vs_workflows_smoke.py" "from agents_vs_workflows.workflow.pipeline import run_workflow\n\n\ndef test_workflow_smoke():\n    assert run_workflow()[\"status\"] == \"ok\"\n"
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/data/samples.jsonl" ""
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/data/gold.jsonl" ""
+write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/pyproject.toml" "[project]
 name = \"agents-vs-workflows\"
 version = \"0.1.0\"
 requires-python = \">=3.11\"
@@ -136,7 +136,7 @@ uv pip install --python .venv/bin/python ruff pytest hatchling
 log "installing local packages in editable mode"
 uv pip install --python .venv/bin/python \
   -e shared \
-  -e experiments/agents_vs_workflows \
+  -e use_cases/customer_doc_triage/experiments/agents_vs_workflows \
   -e experiments/tabular_baselines
 
 log "setup complete"

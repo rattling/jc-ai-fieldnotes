@@ -3,5 +3,5 @@ line-length = 100
 target-version = "py311"
 
 [tool.pytest.ini_options]
-testpaths = ["shared/tests", "experiments"]
+testpaths = ["shared/tests", "experiments", "use_cases"]
 addopts = "-q"

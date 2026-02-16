@@ -10,11 +10,17 @@ Focus: judgement, production realism, and system design.
 
 - [Architecture guidelines for all experiments](docs/ARCHITECTURE_GUIDELINES.md)
 
+## Use Cases
+
+| Use Case | Purpose | Current Experiments |
+|----------|---------|---------------------|
+| `customer_doc_triage` | Customer document triage and routing | `agents_vs_workflows` |
+
 ## Experiments
 
 | Name | Type | Focus |
 |------|------|-------|
-| agents_vs_workflows | CODED | Agentic vs constrained workflows in document triage |
+| use_cases/customer_doc_triage/experiments/agents_vs_workflows | CODED | Agentic vs constrained workflows in document triage |
 | tabular_baselines | CODED | Modern tabular ML vs deep tabular models |
 
 

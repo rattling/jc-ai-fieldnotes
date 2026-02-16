@@ -24,7 +24,7 @@ Goal: isolate when agentic behavior adds meaningful value over constrained workf
 Generate reproducible dataset artifacts:
 
 ```bash
-python experiments/agents_vs_workflows/scripts/generate_synthetic_data.py --count 200 --seed 42
+python use_cases/customer_doc_triage/experiments/agents_vs_workflows/scripts/generate_synthetic_data.py --count 200 --seed 42
 ```
 
 Outputs:
@@ -39,15 +39,15 @@ python -m agents_vs_workflows.eval.report
 ```
 
 Outputs:
-- `experiments/agents_vs_workflows/eval_outputs/ab_eval_summary.json`
-- `experiments/agents_vs_workflows/eval_outputs/ab_eval_summary.md`
-- `experiments/agents_vs_workflows/eval_outputs/per_case_predictions.csv`
+- `use_cases/customer_doc_triage/experiments/agents_vs_workflows/eval_outputs/ab_eval_summary.json`
+- `use_cases/customer_doc_triage/experiments/agents_vs_workflows/eval_outputs/ab_eval_summary.md`
+- `use_cases/customer_doc_triage/experiments/agents_vs_workflows/eval_outputs/per_case_predictions.csv`
 
 ## CLI runner (VS Code friendly)
 Primary run script with default args (works via VS Code Run button):
 
 ```bash
-python experiments/agents_vs_workflows/scripts/run_agents_vs_workflows.py
+python use_cases/customer_doc_triage/experiments/agents_vs_workflows/scripts/run_agents_vs_workflows.py
 ```
 
 Useful optional args:
@@ -59,7 +59,7 @@ VS Code launch presets are in `.vscode/launch.json`.
 
 ## Notebook walkthrough
 Illustrative side-by-side notebook:
-- `experiments/agents_vs_workflows/notebooks/ab_comparison_walkthrough.ipynb`
+- `use_cases/customer_doc_triage/experiments/agents_vs_workflows/notebooks/ab_comparison_walkthrough.ipynb`
 
 ## What comes next
 1. Create synthetic customer documents in `data/`.

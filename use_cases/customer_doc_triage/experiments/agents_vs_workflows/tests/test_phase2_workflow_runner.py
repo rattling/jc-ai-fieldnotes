@@ -24,7 +24,13 @@ def _sample_input(**overrides):
 
 
 def test_workflow_runner_retries_once_and_returns_valid_decision():
-    decision = run_workflow(_sample_input(), max_retries=1)
+    metadata = {
+        "requested_role": "admin",
+        "justification": "migration window",
+        "approval_reference": "CHG-100",
+        "_force_retry_once": True,
+    }
+    decision = run_workflow(_sample_input(metadata=metadata), max_retries=1)
 
     assert decision.doc_id == "DOC-WF-001"
     assert decision.decision_trace.mode == "workflow"
