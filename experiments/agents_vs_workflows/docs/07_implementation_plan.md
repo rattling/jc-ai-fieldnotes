@@ -68,23 +68,23 @@ Exit criteria:
 ## Phase 4 — Replay eval harness (A vs B)
 
 ### 4.1 Harness and metrics
-- [ ] Add runner to replay on `data/samples.jsonl`
-- [ ] Join predictions with `data/gold.jsonl`
-- [ ] Compute metrics:
-  - [ ] doc-type accuracy
-  - [ ] queue accuracy
-  - [ ] escalation precision/recall
-  - [ ] missing-field recall
-  - [ ] latency/cost proxies
-- [ ] Add slice reporting by doc type and edge-case flag
+- [x] Add runner to replay on `data/samples.jsonl`
+- [x] Join predictions with `data/gold.jsonl`
+- [x] Compute metrics:
+   - [x] doc-type accuracy
+   - [x] queue accuracy
+   - [x] escalation precision/recall
+   - [x] missing-field recall
+   - [x] latency/cost proxies
+- [x] Add slice reporting by doc type and edge-case flag
 
 ### 4.2 Reproducibility
-- [ ] Save eval output artifacts (json/csv/markdown summary)
-- [ ] Add deterministic run command to README
+- [x] Save eval output artifacts (json/csv/markdown summary)
+- [x] Add deterministic run command to README
 
 Exit criteria:
-- [ ] Same harness executes A and B on identical snapshot
-- [ ] Comparison report generated in one command
+- [x] Same harness executes A and B on identical snapshot
+- [x] Comparison report generated in one command
 
 ## Phase 5 — Findings and hardening
 

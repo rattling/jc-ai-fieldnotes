@@ -31,6 +31,18 @@ Outputs:
 - `data/samples.jsonl` (inputs)
 - `data/gold.jsonl` (expected labels)
 
+## Replay evaluation (A vs B)
+Run deterministic replay evaluation on shared corpus snapshot:
+
+```bash
+python -m agents_vs_workflows.eval.report
+```
+
+Outputs:
+- `experiments/agents_vs_workflows/eval_outputs/ab_eval_summary.json`
+- `experiments/agents_vs_workflows/eval_outputs/ab_eval_summary.md`
+- `experiments/agents_vs_workflows/eval_outputs/per_case_predictions.csv`
+
 ## What comes next
 1. Create synthetic customer documents in `data/`.
 2. Build shared ingestion/schema/eval components.
