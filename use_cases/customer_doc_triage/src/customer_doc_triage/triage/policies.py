@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from agents_vs_workflows.triage.schemas import DocType, Priority
+from customer_doc_triage.triage.schemas import DocType, Priority
 
 REQUIRED_FIELDS_BY_DOC_TYPE: dict[DocType, tuple[str, ...]] = {
     "incident_report": ("service", "region", "request_id_examples"),

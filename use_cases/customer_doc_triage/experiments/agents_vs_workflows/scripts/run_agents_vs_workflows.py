@@ -6,9 +6,9 @@ import json
 from pathlib import Path
 from typing import Any
 
-from agents_vs_workflows.agent.pipeline import run_agentic
-from agents_vs_workflows.eval.harness import run_eval
-from agents_vs_workflows.workflow.pipeline import run_workflow
+from customer_doc_triage.agent.pipeline import run_agentic
+from customer_doc_triage.eval.harness import run_eval
+from customer_doc_triage.workflow.pipeline import run_workflow
 
 
 def _read_jsonl(path: Path, limit: int | None = None) -> list[dict[str, Any]]:

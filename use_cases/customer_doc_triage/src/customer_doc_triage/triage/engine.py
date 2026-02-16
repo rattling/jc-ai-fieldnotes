@@ -2,12 +2,12 @@ from __future__ import annotations
 
 from time import perf_counter
 
-from agents_vs_workflows.triage.policies import (
+from customer_doc_triage.triage.policies import (
     find_required_missing_fields,
     recommend_queue,
     should_escalate,
 )
-from agents_vs_workflows.triage.schemas import DecisionTrace, DocType, TriageDecision, TriageInput
+from customer_doc_triage.triage.schemas import DecisionTrace, DocType, TriageDecision, TriageInput
 
 DOC_TYPE_KEYWORDS: dict[DocType, tuple[str, ...]] = {
     "incident_report": ("incident", "latency", "outage", "error rate", "request ids"),

@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from agents_vs_workflows.eval.harness import run_eval
+from customer_doc_triage.eval.harness import run_eval
 
 
 def _write_jsonl(path: Path, rows: list[dict]) -> None:

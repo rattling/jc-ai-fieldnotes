@@ -30,7 +30,7 @@ log "scaffolding repository layout"
 
 create_dir "scripts"
 create_dir "docs"
-create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/workflow"
+create_dir "use_cases/customer_doc_triage/src/customer_doc_triage"
 create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/agent"
 create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/eval"
 create_dir "use_cases/customer_doc_triage/experiments/agents_vs_workflows/tests"
@@ -71,6 +71,23 @@ build-backend = \"hatchling.build\"
 packages = [\"src/shared\"]
 "
 
+write_if_missing "use_cases/customer_doc_triage/src/customer_doc_triage/__init__.py" ""
+write_if_missing "use_cases/customer_doc_triage/pyproject.toml" "[project]
+name = \"customer-doc-triage\"
+version = \"0.1.0\"
+requires-python = \">=3.11\"
+dependencies = [
+  \"pydantic>=2\",
+]
+
+[build-system]
+requires = [\"hatchling\"]
+build-backend = \"hatchling.build\"
+
+[tool.hatch.build.targets.wheel]
+packages = [\"src/customer_doc_triage\"]
+"
+
 write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/README.md" "# agents_vs_workflows\n\nType: CODED\nDepth: MVP\n"
 write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/__init__.py" ""
 write_if_missing "use_cases/customer_doc_triage/experiments/agents_vs_workflows/src/agents_vs_workflows/config.py" "MODEL_NAME = \"gpt-4.1-mini\"\n"
@@ -94,6 +111,7 @@ name = \"agents-vs-workflows\"
 version = \"0.1.0\"
 requires-python = \">=3.11\"
 dependencies = [
+  \"customer-doc-triage>=0.1.0\",
   \"pydantic>=2\",
 ]
 

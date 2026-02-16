@@ -1,10 +1,10 @@
-from agents_vs_workflows.triage.policies import (
+from customer_doc_triage.triage.policies import (
     find_required_missing_fields,
     recommend_queue,
     should_escalate,
 )
-from agents_vs_workflows.triage.schemas import DecisionTrace, TriageDecision, TriageInput
-from agents_vs_workflows.triage.validation import (
+from customer_doc_triage.triage.schemas import DecisionTrace, TriageDecision, TriageInput
+from customer_doc_triage.triage.validation import (
     assert_valid_triage_decision,
     validate_triage_decision,
 )

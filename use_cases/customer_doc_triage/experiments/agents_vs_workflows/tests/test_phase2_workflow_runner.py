@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from agents_vs_workflows.workflow.pipeline import run_workflow
+from customer_doc_triage.workflow.pipeline import run_workflow
 
 
 def _sample_input(**overrides):

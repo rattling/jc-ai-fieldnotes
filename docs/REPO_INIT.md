@@ -16,7 +16,7 @@ The goal is to make this repo:
 - **One virtualenv at repo root** (Python 3.11).
 - Each experiment has its own `pyproject.toml` with its own dependencies.
 - You “workspace-install” by installing **each package editable** into the one root venv:
-  - `uv pip install -e shared -e use_cases/customer_doc_triage/experiments/agents_vs_workflows ...`
+  - `uv pip install -e shared -e use_cases/customer_doc_triage -e use_cases/customer_doc_triage/experiments/agents_vs_workflows ...`
 - This produces a **single environment** containing the union of dependencies across installed packages, while preserving per-experiment packaging boundaries.
 
 This is *functionally* a workspace even if we don’t rely on any specific uv “workspace” TOML schema that might change over time.
@@ -48,6 +48,11 @@ jc-ai-fieldnotes/
 
   use_cases/
     customer_doc_triage/
+      pyproject.toml
+      src/
+        customer_doc_triage/
+          __init__.py
+          triage/
       experiments/
         agents_vs_workflows/
           README.md
@@ -129,7 +134,7 @@ Activate after bootstrap:
 ### Install shared + all experiments (editable)
 From repo root:
 ```bash
-uv pip install -e shared   -e use_cases/customer_doc_triage/experiments/agents_vs_workflows   -e experiments/tabular_baselines
+uv pip install -e shared   -e use_cases/customer_doc_triage   -e use_cases/customer_doc_triage/experiments/agents_vs_workflows   -e experiments/tabular_baselines
 ```
 
 This gives you:

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from agents_vs_workflows.agent.pipeline import run_agentic
+from customer_doc_triage.agent.pipeline import run_agentic
 
 
 def _agent_input(**overrides):

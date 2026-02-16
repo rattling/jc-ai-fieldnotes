@@ -1,4 +1,4 @@
-from agents_vs_workflows.workflow.pipeline import run_workflow
+from customer_doc_triage.workflow.pipeline import run_workflow
 
 
 def main() -> None:

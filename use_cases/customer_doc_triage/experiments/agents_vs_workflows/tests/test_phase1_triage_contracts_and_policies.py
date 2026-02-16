@@ -5,13 +5,13 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from agents_vs_workflows.triage.policies import (
+from customer_doc_triage.triage.policies import (
     find_required_missing_fields,
     recommend_queue,
     should_escalate,
 )
-from agents_vs_workflows.triage.schemas import DecisionTrace, TriageDecision, TriageInput
-from agents_vs_workflows.triage.validation import validate_triage_decision
+from customer_doc_triage.triage.schemas import DecisionTrace, TriageDecision, TriageInput
+from customer_doc_triage.triage.validation import validate_triage_decision
 
 
 def _base_input(**overrides):

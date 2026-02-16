@@ -16,6 +16,8 @@ Focus: judgement, production realism, and system design.
 |----------|---------|---------------------|
 | `customer_doc_triage` | Customer document triage and routing | `agents_vs_workflows` |
 
+Use-case shared code for `customer_doc_triage` lives in `use_cases/customer_doc_triage/src/customer_doc_triage`, while experiment folders keep run-mode specifics, eval artifacts, and notebooks.
+
 ## Experiments
 
 | Name | Type | Focus |

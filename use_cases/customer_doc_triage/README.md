@@ -6,11 +6,19 @@ Core use-case boundary for customer document triage.
 Hold shared scenario assets for this domain while enabling multiple focused experiments.
 
 ## Boundary
-- Shared business context, schemas, policy assumptions, and evaluation semantics live at use-case level.
+- Shared business context, schemas, and policy assumptions live at use-case level in `src/customer_doc_triage`.
 - Individual experiments change one primary variable at a time (orchestration mode, thresholds, retrieval strategy, etc.).
 
 ## Current experiments
 - `experiments/agents_vs_workflows`
+
+## Use-case core package
+- `src/customer_doc_triage/triage/schemas.py`
+- `src/customer_doc_triage/triage/policies.py`
+- `src/customer_doc_triage/triage/validation.py`
+- `src/customer_doc_triage/triage/engine.py`
+
+Experiments should consume this package rather than duplicating triage domain code.
 
 ## Expansion model
 One use case can host multiple experiments and findings:

@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from agents_vs_workflows.triage.policies import (
+from customer_doc_triage.triage.policies import (
     find_required_missing_fields,
     recommend_queue,
     should_escalate,
 )
-from agents_vs_workflows.triage.schemas import TriageDecision, TriageInput
+from customer_doc_triage.triage.schemas import TriageDecision, TriageInput
 
 
 def validate_triage_decision(triage_input: TriageInput, decision: TriageDecision) -> list[str]:
