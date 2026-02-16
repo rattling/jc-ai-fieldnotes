@@ -1,4 +1,4 @@
-# jc-ai-fieldnotes
+# JC AI Fieldnotes
 
 Applied data science, ML, and AI systems work grounded in realistic decision workflows.
 
@@ -12,11 +12,16 @@ Focus: judgement, production realism, and system design.
 After cloning, from repo root:
 
 ```bash
+cp .env.example .env
+# edit .env and set OPENAI_API_KEY
+
 uv venv -p 3.11
 uv pip install --python .venv/bin/python ruff pytest hatchling
 uv pip install --python .venv/bin/python -e shared -e use_cases/customer_doc_triage -e use_cases/customer_doc_triage/experiments/agents_vs_workflows
 source .venv/bin/activate
 ```
+
+Current provider setup is OpenAI-only (`OPENAI_API_KEY`).
 
 Verify everything is wired correctly by running the active coded experiment:
 
