@@ -6,6 +6,10 @@ These notes document experiments, implementation patterns, architectural trade-o
 
 Focus: judgement, production realism, and system design.
 
+## Field Notes
+
+- [Repository field notes (reader-friendly guide)](docs/FIELDNOTES.md)
+
 ## Architecture
 
 - [Architecture guidelines for all experiments](docs/ARCHITECTURE_GUIDELINES.md)

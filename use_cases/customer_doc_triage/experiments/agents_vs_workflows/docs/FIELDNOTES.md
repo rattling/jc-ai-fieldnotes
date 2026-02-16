@@ -1,31 +1,32 @@
 # Fieldnotes — Agents vs Workflows
 
-## Finding 001: Core architectural distinction
+## Table of contents
+- [Finding 001: Core architectural distinction (design-phase)](#finding-001-core-architectural-distinction-design-phase)
+- [Finding 002: Shared safety boundary is preserved across A/B](#finding-002-shared-safety-boundary-is-preserved-across-ab)
+- [Finding 003: Agent mode outperforms workflow on this synthetic corpus](#finding-003-agent-mode-outperforms-workflow-on-this-synthetic-corpus)
+- [Finding 004: Diversity of execution paths is now measurable](#finding-004-diversity-of-execution-paths-is-now-measurable)
+- [Finding 005: Notebook rehydration/import reliability is resolved](#finding-005-notebook-rehydrationimport-reliability-is-resolved)
+- [Implications and next experiments](#implications-and-next-experiments)
+
+## Finding 001: Core architectural distinction (design-phase)
 **Option A uses a fixed control graph; Option B uses a partially dynamic control graph.**
 
-This is the first and most important framing for the experiment.
+This remains the primary framing for the experiment.
 
 - **Option A (workflow-constrained):** control flow is predefined and deterministic (with bounded retries).
 - **Option B (agentic):** control flow can branch at runtime based on case context and tool outcomes.
 
-At design/build stage, this becomes the key distinction to preserve and measure.
-
-## Why this matters
+### Why this matters
 - It changes how we reason about reliability, testing, and governance.
 - It changes how we reason about adaptivity on ambiguous documents.
 - It changes where complexity lives: orchestration code (A) vs runtime policy/guardrails (B).
 
-## Human-role analogy
-A useful analogy is two types of human triage roles:
-
+### Human-role analogy
 - **Rote triage operator (A-like):** follows a strict checklist in a fixed order and escalates when inputs do not fit.
 - **Empowered triage analyst (B-like):** chooses what evidence to gather next, consults references as needed, then makes a recommendation under policy constraints.
 
-Both can produce high-quality outcomes; they differ in flexibility, supervision burden, and failure modes.
-
-## Brief pros and cons
-
-### Option A (fixed graph)
+### Brief pros and cons
+#### Option A (fixed graph)
 **Pros**
 - predictable execution and easier testing
 - simpler operational controls
@@ -36,7 +37,7 @@ Both can produce high-quality outcomes; they differ in flexibility, supervision 
 - can require prompt/rule maintenance churn
 - may miss context that a dynamic evidence-gathering loop could catch
 
-### Option B (dynamic graph)
+#### Option B (dynamic graph)
 **Pros**
 - adaptive evidence gathering and tool selection
 - better handling of ambiguous/edge cases
@@ -47,37 +48,8 @@ Both can produce high-quality outcomes; they differ in flexibility, supervision 
 - harder to bound latency/cost without strict caps
 - broader safety and observability burden
 
-## Case-dependent subgraphs in Option B
-The agent does not run one universal checklist for every document.
-It behaves like a capable triage analyst who asks, "What is missing in this case?" and then chooses the next best action.
-Different case types trigger different mini-workflows (subgraphs), while still converging to the same final validation and routing step.
-
-Consider two tickets arriving back-to-back:
-
-**Ticket 1 (incomplete incident report)**
-> "Production API latency doubled after 14:00 UTC. Impacting EU users."
->
-> Attached fields: `region=EU`, `service=api-gateway`
->
-> Missing fields: `customer_tier`, `incident_start_time`, `request_id examples`
-
-For this case, the agent's best move is a **metadata completion subgraph**:
-- extract what is present
-- infer what can be inferred safely
-- flag/request what cannot be inferred
-- only then finalize triage
-
-**Ticket 2 (policy ambiguity)**
-> "Please grant temporary admin access to external contractor for overnight migration."
->
-> Customer says change window is approved, but account is in a regulated environment.
-
-For this case, the agent should run a **policy interpretation subgraph**:
-- retrieve access-control and exception policy
-- cross-check customer tier/regulatory flags
-- determine escalation requirement before routing
-
-Both tickets are "triage," but the right intermediate steps are clearly different.
+### Case-dependent subgraphs in Option B
+The agent does not run one universal checklist for every document. Different case types trigger different mini-workflows, while still converging to the same final validation and routing step.
 
 ```mermaid
 flowchart TD
@@ -100,10 +72,55 @@ flowchart TD
     G --> H[Route or escalate]
 ```
 
-The diagram shows exactly how these case-specific paths diverge and re-converge.
-This is the operational behavior to measure against Option A during build and evaluation.
+## Finding 002: Shared safety boundary is preserved across A/B
+**Both orchestration modes now converge on the same decision contract and fail-closed behavior.**
 
-## Design and build implication
-For implementation, shared components should remain constant (schema, validators, policy checks, metrics), while only the orchestration behavior differs between A and B.
+Evidence from core code:
+- Workflow path uses bounded retries and explicit fail-closed fallback in `customer_doc_triage.workflow.pipeline.run_workflow`.
+- Agent path uses guardrails (allowlist, max tool calls, timeout) and then same validation/fail-closed boundary in `customer_doc_triage.agent.pipeline.run_agentic`.
+- Shared schema/policy scoring remains centralized in `customer_doc_triage.triage` and `customer_doc_triage.eval.metrics`.
 
-That keeps comparisons fair and makes this finding testable.
+Interpretation:
+- We maintained fairness for A/B comparison by keeping output schema, policy validation, and fail-closed semantics common.
+
+## Finding 003: Agent mode outperforms workflow on this synthetic corpus
+**On the current 200-row synthetic run, agent mode has higher quality metrics with similar safety recall.**
+
+Observed from notebook aggregate metrics and `eval_outputs/ab_eval_summary.md`:
+- Workflow: doc type / queue accuracy = **0.915 / 0.915**
+- Agent: doc type / queue accuracy = **1.000 / 1.000**
+- Escalation recall: **1.000** for both
+- Escalation precision: **0.2125** (workflow) vs **0.2576** (agent)
+- Missing-field recall: **0.965** (workflow) vs **1.000** (agent)
+
+Interpretation:
+- Agent mode currently provides a measurable quality lift, especially on edge-like and ambiguous samples, while preserving full escalation recall.
+
+## Finding 004: Diversity of execution paths is now measurable
+**The A/B gap is not only quality; it is also structural behavior.**
+
+Observed:
+- Distinct step patterns: workflow **1** vs agent **3**
+- Average tool calls: workflow **0.00** vs agent **3.465**
+- Agent pattern A (107 cases): `detect_doc_type -> extract_metadata -> check_completeness` (mainly `billing_dispute`, `feature_request`, `security_questionnaire`)
+- Agent pattern B (52 cases): `detect_doc_type -> extract_metadata -> check_completeness -> risk_scan` (`incident_report`)
+- Agent pattern C (41 cases): `detect_doc_type -> lookup_policy_context -> risk_scan -> check_completeness` (`access_request`)
+
+Interpretation:
+- Workflow is a single fixed path; agent expresses controlled path diversity that responds to case context, matching the design hypothesis of case-dependent subgraphs.
+
+## Finding 005: Notebook rehydration/import reliability is resolved
+**Notebook execution is now robust to working-directory differences.**
+
+Observed from notebook run output:
+- Import setup confirms repo root discovery and `customer_doc_triage` source path availability.
+- Notebook now executes through aggregate metric cells successfully in sequence.
+
+Interpretation:
+- The exploratory workflow is now reproducible for contributors without requiring prior editable install in all cases.
+
+## Implications and next experiments
+1. Keep promoting reusable orchestration/eval logic into `customer_doc_triage` core; keep experiment folders focused on variable-specific deltas and artifacts.
+2. Add calibrated latency proxies (non-zero simulated/real timings) so runtime-cost trade-offs can be compared alongside quality.
+3. Stress test guardrail behavior with targeted adversarial and policy-conflict slices.
+4. Run a larger mixed corpus with harder ambiguous cases to verify whether the current agent quality edge persists.
