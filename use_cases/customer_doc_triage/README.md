@@ -25,3 +25,10 @@ One use case can host multiple experiments and findings:
 - `experiments/<experiment_name>/...`
 - docs and artifacts remain scoped to each experiment
 - findings are comparable because they share the same use-case framing
+
+## Contributor workflow
+1. Add or evolve an experiment under `experiments/<experiment_name>`.
+2. Keep experiment-only assets local: plans, notebooks, corpus snapshots, eval outputs.
+3. Implement reusable runtime/domain changes in `src/customer_doc_triage`.
+4. Leave experiment package code as thin wrappers or wiring around use-case core.
+5. Promote only logic that is reuse-ready across current/future experiments.

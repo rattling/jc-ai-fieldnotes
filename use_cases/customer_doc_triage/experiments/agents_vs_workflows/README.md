@@ -10,6 +10,11 @@ Compare two LLM-powered approaches for customer document triage in a realistic s
 
 Goal: isolate when agentic behavior adds meaningful value over constrained workflows.
 
+## Relation to use-case core
+- Shared triage/runtime logic belongs in `use_cases/customer_doc_triage/src/customer_doc_triage`.
+- This experiment folder holds experiment-specific docs, notebook workflow, and evaluation artifacts.
+- Local package modules should remain thin wrappers/glue over use-case core where possible.
+
 ## Descriptive docs (start here)
 - [Fieldnotes](docs/FIELDNOTES.md)
 - [Domain, company, and use case](docs/01_domain_and_use_case.md)

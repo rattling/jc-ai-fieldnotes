@@ -13,6 +13,12 @@ These guidelines apply to all CODED experiments.
 - Keep the system easy to inspect, run, and evolve.
 - Support fair A/B comparison when experiments evaluate design choices.
 
+## Repository promotion rule
+For use-case scoped work:
+- Reusable domain/runtime logic lives in `use_cases/<use_case>/src/<package>`.
+- Experiment folders keep variable-specific wiring, plans, notebooks, and eval artifacts.
+- After validating an experiment, promote stable reusable logic to use-case core and keep experiment code thin.
+
 ## Recommended module shape
 Use this as a default, not a rigid rule:
 

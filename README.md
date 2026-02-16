@@ -18,6 +18,14 @@ Focus: judgement, production realism, and system design.
 
 Use-case shared code for `customer_doc_triage` lives in `use_cases/customer_doc_triage/src/customer_doc_triage`, while experiment folders keep run-mode specifics, eval artifacts, and notebooks.
 
+## Contributor Workflow
+
+For use-case work, follow this promotion loop:
+- Create or update an experiment under `use_cases/<use_case>/experiments/<experiment_name>`.
+- Reuse and extend shared domain/runtime code in `use_cases/<use_case>/src/<package>`.
+- Keep experiment-specific plans, notebooks, and eval outputs inside the experiment folder.
+- Promote validated reusable logic into the use-case package; keep experiment wrappers thin.
+
 ## Experiments
 
 | Name | Type | Focus |
