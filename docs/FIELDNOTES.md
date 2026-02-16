@@ -69,11 +69,11 @@ On the current 200-document synthetic corpus, the “agent vs workflow” differ
 
 ### 1) The agent actually changes its execution path by situation
 We currently see three recurring runtime subgraphs:
-- **General triage path (107 cases):** `detect_doc_type -> extract_metadata -> check_completeness`
+- **General triage path (114 cases):** `detect_doc_type -> extract_metadata -> check_completeness`
    - Mostly `billing_dispute`, `feature_request`, `security_questionnaire`
-- **Incident path (52 cases):** `detect_doc_type -> extract_metadata -> check_completeness -> risk_scan`
+- **Incident path (53 cases):** `detect_doc_type -> extract_metadata -> check_completeness -> risk_scan`
    - Primarily `incident_report`
-- **Privileged-access/policy path (41 cases):** `detect_doc_type -> lookup_policy_context -> risk_scan -> check_completeness`
+- **Privileged-access/policy path (33 cases):** `detect_doc_type -> lookup_policy_context -> risk_scan -> check_completeness`
    - Primarily `access_request`
 
 That is the practical meaning of “agentic”: sequence selection changes with case context.
@@ -96,8 +96,6 @@ Current summary metrics:
 - Escalation recall: **1.000** for both
 - Escalation precision: **0.500** (workflow) vs **1.000** (agent)
 - Distinct step patterns: **1** (workflow) vs **3** (agent)
-
-Note: we aligned synthetic gold labeling with the same core escalation policy used by runtime, which removed a previous policy-vs-eval mismatch and made precision results policy-consistent.
 
 So the significance is two-dimensional:
 - **Outcome quality** can improve,

@@ -102,12 +102,10 @@ Interpretation:
 ## Finding 003b: The current deltas are statistically stable on this corpus
 **Paired bootstrap intervals suggest the observed quality lift is not a narrow noise artifact for this 200-row snapshot.**
 
-After aligning synthetic gold labels with the same core policy used at runtime, the precision gap became materially cleaner and more interpretable (policy-consistent comparison).
-
 Using 4,000 paired bootstrap resamples over the current corpus (`agent - workflow`):
-- Doc-type accuracy delta: **+0.085** (95% CI: **+0.050 to +0.125**)
-- Queue accuracy delta: **+0.0847** (95% CI: **+0.050 to +0.125**)
-- Missing-field recall delta: **+0.0352** (95% CI: **+0.010 to +0.060**)
+- Doc-type accuracy delta: **+0.0751** (95% CI: **+0.040 to +0.115**)
+- Queue accuracy delta: **+0.0750** (95% CI: **+0.040 to +0.115**)
+- Missing-field recall delta: **+0.0300** (95% CI: **+0.010 to +0.055**)
 
 Interpretation:
 - On this fixed synthetic distribution, the advantage is directionally robust.
@@ -120,13 +118,13 @@ Per-case taxonomy (200 cases):
 
 | Error class | Workflow | Agent |
 |-------------|----------|-------|
-| clean_correct_all | 136 | 151 |
-| doc_type_mismatch | 17 | 0 |
-| queue_mismatch | 17 | 0 |
-| escalation_fp | 63 | 49 |
+| clean_correct_all | 185 | 200 |
+| doc_type_mismatch | 15 | 0 |
+| queue_mismatch | 15 | 0 |
+| escalation_fp | 13 | 0 |
 | escalation_fn | 0 | 0 |
-| missing_field_incomplete | 7 | 0 |
-| multi_error_cases | 17 | 0 |
+| missing_field_incomplete | 6 | 0 |
+| multi_error_cases | 15 | 0 |
 
 Interpretation:
 - The biggest shared issue is conservative over-escalation (FP), not missed escalations (FN).
@@ -137,10 +135,10 @@ Interpretation:
 
 Observed:
 - Distinct step patterns: workflow **1** vs agent **3**
-- Average tool calls: workflow **0.00** vs agent **3.465**
-- Agent pattern A (107 cases): `detect_doc_type -> extract_metadata -> check_completeness` (mainly `billing_dispute`, `feature_request`, `security_questionnaire`)
-- Agent pattern B (52 cases): `detect_doc_type -> extract_metadata -> check_completeness -> risk_scan` (`incident_report`)
-- Agent pattern C (41 cases): `detect_doc_type -> lookup_policy_context -> risk_scan -> check_completeness` (`access_request`)
+- Average tool calls: workflow **0.00** vs agent **3.43**
+- Agent pattern A (114 cases): `detect_doc_type -> extract_metadata -> check_completeness` (mainly `billing_dispute`, `feature_request`, `security_questionnaire`)
+- Agent pattern B (53 cases): `detect_doc_type -> extract_metadata -> check_completeness -> risk_scan` (`incident_report`)
+- Agent pattern C (33 cases): `detect_doc_type -> lookup_policy_context -> risk_scan -> check_completeness` (`access_request`)
 
 Interpretation:
 - Workflow is a single fixed path; agent expresses controlled path diversity that responds to case context, matching the design hypothesis of case-dependent subgraphs.
